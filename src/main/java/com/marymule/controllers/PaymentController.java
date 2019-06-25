@@ -4,11 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/results")
-public class ResultsController {
-
-	@RequestMapping(value = "/add_results")
-	public String addResults() {
-		return "addResults";
+@RequestMapping(value = "/payment")
+public class PaymentController {
+	
+	@RequestMapping(value="/payment_add")
+	public String addPayment() {
+		return "addPayment";
 	}
+
 }

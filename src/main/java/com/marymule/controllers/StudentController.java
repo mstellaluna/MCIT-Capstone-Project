@@ -11,4 +11,20 @@ public class StudentController {
 	public String addStudent() {
 		return "addStudent";
 	}
+	
+	@RequestMapping(value = "/student_list")
+	public String displayAllStudents() {
+		return "displayAllStudents";
+	}
+	
+	@RequestMapping(value = "/student_details")
+	public String displayStudentDetails() {
+		return "displayStudentDetails";
+				
+	}
+	
+	@RequestMapping(value = "/edit_student/{id}")
+	public String editStudentDetails() {
+		return "editStudent";
+	}
 }
