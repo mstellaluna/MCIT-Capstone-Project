@@ -4,6 +4,8 @@ package com.marymule.model;
 /**
  * The Class Student.
  */
+
+
 public class Student {
 	
 	/** The id. */
