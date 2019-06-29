@@ -8,8 +8,12 @@ public class MainController {
 	
 	 @RequestMapping(value="/")
 	 public String getLoginPage() {
+		 return "login";
+	 }
+	 
+	 @RequestMapping(value={"/index", "/menu"})
+	 public String getIndexPage() {
 		 return "index";
-
-}
+	 }
 
 }

@@ -7,8 +7,6 @@
 <link href="<c:url value="/resources/theme/css/bootstrap/bootstrap.min.css" />" rel="stylesheet">
 <!-- Custom CSS File -->
 <link href="<c:url value="/resources/theme/css/styles.css" />" rel="stylesheet">
-<!-- FontAwesome -->
-<link href="<c:url value="/resources/theme/css/fontawesome/fontawesome.min.css" />" rel="stylesheet">
 <!-- Google Font Import-->
  <link href="https://fonts.googleapis.com/css?family=Lora|Lato" rel="stylesheet">
 
