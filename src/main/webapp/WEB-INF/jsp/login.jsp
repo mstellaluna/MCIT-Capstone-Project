@@ -4,8 +4,13 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
 <title>College Grading System</title>
 <%@include file="/WEB-INF/templates/header.jsp"%>
+=======
+	<title>College Grading System</title>
+	<%@include file="/WEB-INF/templates/header.jsp" %>
+>>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
 </head>
 
 <body>
@@ -16,9 +21,15 @@
             <img src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
         </header>
         <ul>
+<<<<<<< HEAD
             <li tabindex="0"><span><a href="index.html">Home</a></span></li>
             <li tabindex="0"><span><a href="#"> Login</a></span></li>
             <li tabindex="0"><span><a href="register_form.html">Register</a></span></li>
+=======
+            <li tabindex="0"><i class="fas fa-home"></i><span><a href="index.html">Home</a></span></li>
+            <li tabindex="0"><i class="fas fa-sign-in-alt"></i><span><a href="#"> Login</a></span></li>
+            <li tabindex="0"><i class="fas fa-user-plus"></i><span><a href="register_form.html">Register</a></span></li>
+>>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
         </ul>
 
         <div class="switch switch-blue">
