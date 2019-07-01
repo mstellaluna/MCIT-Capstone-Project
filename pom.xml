@@ -8,7 +8,6 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -41,35 +40,6 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>4.3.11.Final</version>
 		</dependency>
-=======
-		
-	<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-webmvc</artifactId>
-    <version>4.3.18.RELEASE</version>
-</dependency>
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-web</artifactId>
-    <version>4.2.3.RELEASE</version>
-</dependency>
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-config</artifactId>
-    <version>4.2.3.RELEASE</version>
-</dependency>		
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-jdbc</artifactId>
-    <version>4.3.18.RELEASE</version>
-</dependency>
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-taglibs</artifactId>
-    <version>4.2.3.RELEASE</version>
-</dependency>
-
->>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -89,7 +59,6 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
 
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -101,19 +70,6 @@
 			<version>8.0.15</version>
 		</dependency>
 
-=======
-		
-    <groupId>org.hibernate.validator</groupId>
-    <artifactId>hibernate-validator</artifactId>
-    <version>6.0.16.Final</version>
-</dependency>	
-<dependency>
-    <groupId>mysql</groupId>
-    <artifactId>mysql-connector-java</artifactId>
-    <version>8.0.15</version>
-</dependency>
-	
->>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -126,19 +82,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-<<<<<<< HEAD
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
 			<version>1.2</version>
 		</dependency>
 
-=======
-    <groupId>commons-logging</groupId>
-    <artifactId>commons-logging</artifactId>
-    <version>1.2</version>
-</dependency>
-		
->>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
 	</dependencies>
 	<build>
 		<plugins>

@@ -5,23 +5,24 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns="http://www.springframework.org/schema/security"
-<<<<<<< HEAD
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-=======
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
->>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Security Filter Configuration -->
 	<http auto-config="true">
-		<intercept-url pattern="/**"
-			access="hasRole('ROLE_USER')" />
+	 	<intercept-url pattern="/login" access="permitAll"/>
+	 	 <intercept-url pattern="/resources/**" access="permitAll" />
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+		<form-login login-page="/login"
+			default-target-url="/index"/>
+		<csrf disabled="true"/>
 	</http>
 
 	<!-- Authentication Manager Provider -->
 	<authentication-manager>
 		<authentication-provider>
+			<password-encoder hash="bcrypt" />
 			<jdbc-user-service data-source-ref="dataSource" />
 		</authentication-provider>
 	</authentication-manager>

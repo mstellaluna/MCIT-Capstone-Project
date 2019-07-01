@@ -276,6 +276,14 @@ table tr td {
 	padding-right: 25px;
 }
 
+.errorblock{
+	color: #ff0000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+
 @media screen and (max-width: 900px) and (min-width: 400px) {
 	body {
 		padding-left: 90px;

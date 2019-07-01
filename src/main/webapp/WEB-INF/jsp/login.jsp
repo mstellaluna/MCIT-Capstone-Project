@@ -4,13 +4,8 @@
 <html lang="en">
 
 <head>
-<<<<<<< HEAD
 <title>College Grading System</title>
 <%@include file="/WEB-INF/templates/header.jsp"%>
-=======
-	<title>College Grading System</title>
-	<%@include file="/WEB-INF/templates/header.jsp" %>
->>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
 </head>
 
 <body>
@@ -21,15 +16,9 @@
             <img src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
         </header>
         <ul>
-<<<<<<< HEAD
             <li tabindex="0"><span><a href="index.html">Home</a></span></li>
             <li tabindex="0"><span><a href="#"> Login</a></span></li>
             <li tabindex="0"><span><a href="register_form.html">Register</a></span></li>
-=======
-            <li tabindex="0"><i class="fas fa-home"></i><span><a href="index.html">Home</a></span></li>
-            <li tabindex="0"><i class="fas fa-sign-in-alt"></i><span><a href="#"> Login</a></span></li>
-            <li tabindex="0"><i class="fas fa-user-plus"></i><span><a href="register_form.html">Register</a></span></li>
->>>>>>> e5bc1ff3ca3ce40fe811c83fcad6ddaa77e9244c
         </ul>
 
         <div class="switch switch-blue">
@@ -41,21 +30,38 @@
           </div>
     </nav>
 
+ <div class="container loginForm">
 
-    <div class="container forms">
 
-        <form class="text-center p-5">
+        <h1>Login</h1>
 
-            <h1>Login</h1>
-
+        <form name='f' action="login" method='POST'>
 
             <div class="form-row form-container">
-                <input type="email" id="email" class="form-control mb-4" placeholder="E-mail Address">
-                <input type="password" id="password" class="form-control mb-4" placeholder="Password">
-                <button class="btn btn-block" type="submit">Login</button>
-                <span>New here? Register<a href="login_form.html"> here.</a></span>
-            </div>    
-
+                <table>
+                    <tr>
+                        <td>
+                            <label for="username" class="col-xs-3 col-form-label mr-2">Username:</label>
+                        </td>
+                        <td>
+                            <input type='text' class="form-control" name='username'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="password" class="col-xs-3 col-form-label mr-2">Password:</label>
+                        </td>
+                        <td>
+                            <input type='password' class="form-control" name='password'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" name="submit" value="submit">Submit</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </form>
     </div>
 </body>
