@@ -245,7 +245,7 @@ div.container.mainForm{
 	font-weight:bold;
 }
 
-div.container.studentForm, div.container.courseForm, div.container.resultsForm, div.container.mainForm
+div.container.studentForm, div.container.loginForm, div.container.courseForm, div.container.resultsForm, div.container.mainForm
 	{
 	margin-top: 100px;
 	height: auto;
@@ -257,6 +257,14 @@ div.container.allStudentView, div.container.allCourseView, div.container.allResu
 	height: 70vh;
 	height: auto;
 	padding-bottom: 15px;
+}
+
+.errorblock{
+	color: #ff0000;
+	background-color: #ffffcc;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
 }
 
 

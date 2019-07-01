@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
- --%>
+
 <head>
 <title>College Grading System</title>
 <%@include file="/WEB-INF/templates/header.jsp"%>
@@ -29,61 +29,61 @@
 
 	<div class="container studentForm">
 		<h1>Add Student</h1>
-		<form action="student" method="post">
+		<form:form action="student" method="post">
 			<table>
 				<tr>
 					<td><label for="firstName"
 						class="col-xs-3 col-form-label mr-2">First Name:</label></td>
-					<td><input type="text" class="form-control" id="firstName"
-						name="firstName"></td>
-				</tr>
+					<td><form:input type="text" class="form-control" path="firstName"
+						name="firstName" required/></td>
+				</tr>  
 				<tr>
 					<td><label for="lastName" class="col-xs-3 col-form-label mr-2">Last
 							Name:</label></td>
-					<td><input type="text" class="form-control" id="lastName"
-						name="lastName"></td>
+					<td><form:input type="text" class="form-control" path="lastName"
+						name="lastName" required/></td>
 				</tr>
 				<tr>
 					<td><label for="university"
 						class="col-xs-3 col-form-label mr-2">Organization:</label></td>
-					<td><input type="text" class="form-control" id="university"
-						name="university"></td>
+					<td><form:input type="text" class="form-control" path='' id="university"
+						name="university" required/></td>
 				</tr>
 				<tr>
 					<td><label for="address" class="col-xs-3 col-form-label mr-2">Address:</label>
 					</td>
-					<td><input type="text" class="form-control" id="address"
-						name="address"></td>
+					<td><form:input type="text" class="form-control" 
+						name="address" path="address" required/></td>
 				</tr>
 				<tr>
 					<td><label for="city" class="col-xs-3 col-form-label mr-2">City:</label>
 					</td>
-					<td><input type="text" class="form-control" id="city"
-						name="city"></td>
+					<td><form:input type="text" class="form-control" path="city"
+						name="city" required/></td>
 				</tr>
 				<tr>
 					<td><label for="state-province"
 						class="col-xs-3 col-form-label mr-2">State/Province:</label></td>
-					<td><input type="text" class="form-control"
-						id="state-province" name="state-province"></td>
+					<td><form:input type="text" class="form-control" path=""
+						id="state-province" name="state-province" required/></td>
 				</tr>
 				<tr>
 					<td><label for="postalCode"
 						class="col-xs-3 col-form-label mr-2">Postal Code:</label></td>
-					<td><input type="text" class="form-control" id="postalCode"
-						name="postalCode"></td>
+					<td><form:input type="text" class="form-control" id="postalCode"
+						name="postalCode" path="" required/></td>
 				</tr>
 				<tr>
 					<td><label for="telephone"
 						class="col-xs-3 col-form-label mr-2">Telephone:</label></td>
-					<td><input type="tel" class="form-control" id="telephone"
-						name="telephone"></td>
+					<td><form:input type="tel" class="form-control" id="telephone"
+						name="telephone" path="" required/></td>
 				</tr>
 
 				<tr>
 					<td><label for="fax" class="col-xs-3 col-form-label mr-2">Fax:</label>
 					</td>
-					<td><input type="tel" class="form-control" id="fax" name="fax">
+					<td><form:input type="tel" class="form-control" id="fax" name="fax" path="" required/>
 					</td>
 				</tr>
 				<tr>
@@ -91,7 +91,7 @@
 						<label for="email" class="col-xs-3 col-form-label mr-2">Email:</label>
 					</td>
 					<td>
-						<input type="email" class="form-control" id="email" name="email">
+						<form:input type="email" class="form-control" id="email" name="email" path="" required/>
 					</td>
 				</tr>
 				<tr>
@@ -99,8 +99,8 @@
 						<label for="gender" class="col-xs-3 col-form-label mr-2">Gender:</label>
 					</td>
 					<td style="text-align: left;" colspan="2">
-						<input type="checkbox" name="male" id="male"> Male 
-						<input type="checkbox" name="female" id="female"> Female
+						<form:input type="checkbox" name="male" id="male" path=""/> Male 
+						<form:input type="checkbox" name="female" id="female" path=""/> Female
 					</td>
 				</tr>
 				<tr>
@@ -108,7 +108,7 @@
 						<label for="birthday" class="col-xs-3 col-form-label mr-2">Date of Birth: </label>
 					</td>
 					<td style="text-align: left;">
-						<input type="date" name="birthday" id="birthday">
+						<form:input type="date" name="birthday" id="birthday" path="" required/>
 					</td>
 				</tr>
 				<tr>
@@ -118,7 +118,7 @@
 					</td>
 				</tr>
 			</table>
-		</form>
+		</form:form>
 	</div>
 </body>
 
