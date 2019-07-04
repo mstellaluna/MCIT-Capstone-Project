@@ -28,6 +28,8 @@
 					href="addCourse.html">Course</a></span></li>
 			<li tabindex="0" class="icon-results"><span><a
 					href="addResults.html">Results</a></span></li>
+			<li tabindex="0" class="icon-results"><span><a
+					href="<c:url value="/logout" />">Logout</a></span></li>
 		</ul>
 	</nav>
 

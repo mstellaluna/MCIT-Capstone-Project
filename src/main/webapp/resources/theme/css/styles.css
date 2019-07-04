@@ -259,12 +259,11 @@ div.container.allStudentView, div.container.allCourseView, div.container.allResu
 	padding-bottom: 15px;
 }
 
-.errorblock{
-	color: #ff0000;
-	background-color: #ffffcc;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
+
+
+#logoutPara{
+	margin: 0 auto;
+	padding-top: 70px;
 }
 
 
@@ -289,7 +288,7 @@ table tr td {
 	background-color: #ffEEEE;
 	border: 3px solid #ff0000;
 	padding: 8px;
-	margin: 16px;
+	margin: 0 auto;
 }
 
 @media screen and (max-width: 900px) and (min-width: 400px) {

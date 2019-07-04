@@ -34,56 +34,56 @@
 				<tr>
 					<td><label for="firstName"
 						class="col-xs-3 col-form-label mr-2">First Name:</label></td>
-					<td><form:input type="text" class="form-control" path="firstName"
+					<td><input type="text" class="form-control" 
 						name="firstName" required/></td>
 				</tr>  
 				<tr>
 					<td><label for="lastName" class="col-xs-3 col-form-label mr-2">Last
 							Name:</label></td>
-					<td><form:input type="text" class="form-control" path="lastName"
+					<td><input type="text" class="form-control"
 						name="lastName" required/></td>
 				</tr>
 				<tr>
 					<td><label for="university"
 						class="col-xs-3 col-form-label mr-2">Organization:</label></td>
-					<td><form:input type="text" class="form-control" path='' id="university"
+					<td><input type="text" class="form-control" id="university"
 						name="university" required/></td>
 				</tr>
 				<tr>
 					<td><label for="address" class="col-xs-3 col-form-label mr-2">Address:</label>
 					</td>
-					<td><form:input type="text" class="form-control" 
-						name="address" path="address" required/></td>
+					<td><input type="text" class="form-control" 
+						name="address" required/></td>
 				</tr>
 				<tr>
 					<td><label for="city" class="col-xs-3 col-form-label mr-2">City:</label>
 					</td>
-					<td><form:input type="text" class="form-control" path="city"
+					<td><input type="text" class="form-control"
 						name="city" required/></td>
 				</tr>
 				<tr>
 					<td><label for="state-province"
 						class="col-xs-3 col-form-label mr-2">State/Province:</label></td>
-					<td><form:input type="text" class="form-control" path=""
+					<td><input type="text" class="form-control"
 						id="state-province" name="state-province" required/></td>
 				</tr>
 				<tr>
 					<td><label for="postalCode"
 						class="col-xs-3 col-form-label mr-2">Postal Code:</label></td>
-					<td><form:input type="text" class="form-control" id="postalCode"
-						name="postalCode" path="" required/></td>
+					<td><input type="text" class="form-control" id="postalCode"
+						name="postalCode"required/></td>
 				</tr>
 				<tr>
 					<td><label for="telephone"
 						class="col-xs-3 col-form-label mr-2">Telephone:</label></td>
-					<td><form:input type="tel" class="form-control" id="telephone"
-						name="telephone" path="" required/></td>
+					<td><input type="tel" class="form-control" id="telephone"
+						name="telephone"  required/></td>
 				</tr>
 
 				<tr>
 					<td><label for="fax" class="col-xs-3 col-form-label mr-2">Fax:</label>
 					</td>
-					<td><form:input type="tel" class="form-control" id="fax" name="fax" path="" required/>
+					<td><input type="tel" class="form-control" id="fax" name="fax" required/>
 					</td>
 				</tr>
 				<tr>
@@ -91,7 +91,7 @@
 						<label for="email" class="col-xs-3 col-form-label mr-2">Email:</label>
 					</td>
 					<td>
-						<form:input type="email" class="form-control" id="email" name="email" path="" required/>
+						<input type="email" class="form-control" id="email" name="email"  required/>
 					</td>
 				</tr>
 				<tr>
@@ -99,8 +99,8 @@
 						<label for="gender" class="col-xs-3 col-form-label mr-2">Gender:</label>
 					</td>
 					<td style="text-align: left;" colspan="2">
-						<form:input type="checkbox" name="male" id="male" path=""/> Male 
-						<form:input type="checkbox" name="female" id="female" path=""/> Female
+						<input type="checkbox" name="male" id="male"/> Male 
+						<input type="checkbox" name="female" id="female"/> Female
 					</td>
 				</tr>
 				<tr>
@@ -108,7 +108,7 @@
 						<label for="birthday" class="col-xs-3 col-form-label mr-2">Date of Birth: </label>
 					</td>
 					<td style="text-align: left;">
-						<form:input type="date" name="birthday" id="birthday" path="" required/>
+						<input type="date" name="birthday" id="birthday" required/>
 					</td>
 				</tr>
 				<tr>

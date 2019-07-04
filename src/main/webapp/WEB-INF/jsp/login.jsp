@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,10 +36,10 @@
 
 
         <h1>Login</h1>
-        <c:if test="${not empty error}">
+        <c:if test="${param.error != null}">
         <div class="errorblock">
             Your login attempt was not successful, please try again.<br /> 
-            Caused : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+            Cause : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
         </div>
 
     </c:if>
@@ -53,7 +54,7 @@
                             <label for="username" class="col-xs-3 col-form-label mr-2">Username:</label>
                         </td>
                         <td>
-                            <input type='text' class="form-control" name='username'>
+                            <input type='text' class="form-control" name='username' required>
                         </td>
                     </tr>
                     <tr>
@@ -61,7 +62,7 @@
                             <label for="password" class="col-xs-3 col-form-label mr-2">Password:</label>
                         </td>
                         <td>
-                            <input type='password' class="form-control" name='password'>
+                            <input type='password' class="form-control" name='password' required>
                         </td>
                     </tr>
                     <tr>

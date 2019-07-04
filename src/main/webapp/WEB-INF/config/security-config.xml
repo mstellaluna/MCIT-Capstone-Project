@@ -12,11 +12,24 @@
 	<!-- Security Filter Configuration -->
 	<http auto-config="true">
 	 	<intercept-url pattern="/login" access="permitAll"/>
+	 	<intercept-url pattern="/logout" access="permitAll"/>
 	 	<intercept-url pattern="/resources/**" access="permitAll" />
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-		<form-login login-page="/login?login_error=1"
+		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/student" access="hasRole('ROLE_STUDENT_ADMIN')" />
+		<intercept-url pattern="/course" access="hasRole('ROLE_TEACHER')" />
+		<intercept-url pattern="/results" access="hasRole('ROLE_PROGRAM_ADMIN')" />
+		
+	
+		<form-login 
+			login-page="/login"
 			default-target-url="/index"
-			authentication-failure-url="/login?error=true"/>
+			authentication-failure-url="/login?error"/>
+		
+		<logout 
+			logout-url="/logout"
+			logout-success-url="/login"
+			delete-cookies="JSESSIONID"
+			/>
 	</http>
 
 	<!-- Authentication Manager Provider -->
