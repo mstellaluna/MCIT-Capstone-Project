@@ -35,7 +35,6 @@ public class Student {
 	 * @param city the city
 	 */
 	public Student(int id, String firstName, String lastName, String address, String city) {
-		super();
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;

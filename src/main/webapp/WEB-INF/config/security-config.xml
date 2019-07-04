@@ -10,11 +10,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Security Filter Configuration -->
-	<http auto-config="true">
+	<http auto-config="true" use-expressions="true">
 	 	<intercept-url pattern="/login" access="permitAll"/>
 	 	<intercept-url pattern="/logout" access="permitAll"/>
+	 	<intercept-url pattern="/403" access="permitAll"/>
 	 	<intercept-url pattern="/resources/**" access="permitAll" />
-		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/student" access="hasRole('ROLE_STUDENT_ADMIN')" />
 		<intercept-url pattern="/course" access="hasRole('ROLE_TEACHER')" />
 		<intercept-url pattern="/results" access="hasRole('ROLE_PROGRAM_ADMIN')" />
@@ -30,6 +31,8 @@
 			logout-success-url="/login"
 			delete-cookies="JSESSIONID"
 			/>
+		
+		<access-denied-handler error-page="/403"/>	
 	</http>
 
 	<!-- Authentication Manager Provider -->

@@ -10,21 +10,7 @@
 </head>
 
 <body>
-
-
-	<nav class="menu" tabindex="0">
-		<div class="smartphone-menu-trigger"></div>
-		<header class="logo">
-			 <img src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
-		</header>
-		<ul>
-			<li tabindex="0" class="icon-student"><span><a href="index.html"> Home</a></span></li>
-			<li tabindex="0" class="icon-student"><span><a href="addStudent.html">Student</a></span></li>
-			<li tabindex="0" class="icon-course"><span><a href="addCourse.html">Course</a></span></li>
-			<li tabindex="0" class="icon-results"><span><a href="addResults.html">Results</a></span></li>
-		</ul>
-	</nav>
-
+	<%@include file="/WEB-INF/templates/nav.jsp"%>
 
 
 	<div class="container studentForm">

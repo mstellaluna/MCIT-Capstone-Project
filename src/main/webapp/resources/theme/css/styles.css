@@ -205,12 +205,14 @@ p {
 	margin-top: 10%;
 }
 
-button[type="submit"] {
-	background-color: #cdcdc0;
+button[type="submit"],
+button[type="reset"] {
+
+/* 	background-color: #cdcdc0;*/
 	margin-top: 20px;
-	margin-left: 40px;
+	margin-left: 10px; 
 	text-align: center;
-	display: blockl
+	display: inline-block;
 }
 
 input[type="text"] {

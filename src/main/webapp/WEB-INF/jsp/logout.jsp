@@ -16,8 +16,7 @@
 	<nav class="menu" tabindex="0">
 		<div class="smartphone-menu-trigger"></div>
 		<header class="logo">
-			<img
-				src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
+			<img src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
 		</header>
 		<ul>
 			<li tabindex="0" class="icon-student"><span><a
