@@ -20,19 +20,19 @@
 		<ul>
 			<security:authorize access="hasRole('ROLE_USER')">
 			<li tabindex="0" class="icon-student"><span><a
-					href="index.html"> Home</a></span></li>
+					href="/index"> Home</a></span></li>
 			</security:authorize>		
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT_ADMIN')">
 			<li tabindex="0" class="icon-student"><span><a
-					href="addStudent.html">Student</a></span></li>
+					href="<c:url value="/student/student_add" />">Student</a></span></li>
 			</security:authorize>
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_PROGRAM_ADMIN')">
 			<li tabindex="0" class="icon-course"><span><a
-					href="addCourse.html">Course</a></span></li>
+					href="<c:url value="/course/course_add" />">Course</a></span></li>
 			</security:authorize>
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
 			<li tabindex="0" class="icon-results"><span><a
-					href="addResults.html">Results</a></span></li>
+					href="<c:url value="/results/results_add" />">Results</a></span></li>
 			</security:authorize>
 			<security:authorize access="hasRole('ROLE_USER')">
 			<li tabindex="0" class="icon-results"><span><a
@@ -54,7 +54,7 @@
 		<h1>Montreal College of Information Technology</h1>
 		<p id="mainPara">
 			Welcome to the MCIT Student Management System<span>
-			<sec:authentication property="name" /></span>
+			<security:authentication property="name" /></span>
 		</p>
 
 
