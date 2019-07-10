@@ -2,6 +2,8 @@ package com.marymule.serviceImpl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.marymule.dao.StudentDAO;
@@ -20,33 +22,36 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
+	@Transactional
 	public void insertStudent(Student student) {
 		studentDAO.insertStudent(student);
 		
 	}
 
 	@Override
+	@Transactional
 	public void updateStudent(Student student) {
-		// TODO Auto-generated method stub
+		studentDAO.updateStudent(student);
 		
 	}
 
 	@Override
+	@Transactional
 	public void deleteStudent(int id) {
-		// TODO Auto-generated method stub
+		studentDAO.deleteStudent(id);
 		
 	}
 
 	@Override
+	@Transactional
 	public Student getStudentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDAO.getStudentById(id);
 	}
 
 	@Override
+	@Transactional
 	public List<Student> getAllStudents() {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDAO.getAllStudents();
 	}
 
 }

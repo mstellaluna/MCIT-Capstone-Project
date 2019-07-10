@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.StudentDAO;
@@ -21,7 +23,6 @@ public class StudentDAOImpl implements StudentDAO{
     }
 
 	@Override
-	@Transactional
 	public void insertStudent(Student student) {
 		Session session = sessionFactory.getCurrentSession();
 		session.persist(student);
@@ -29,27 +30,35 @@ public class StudentDAOImpl implements StudentDAO{
 
 	@Override
 	public void updateStudent(Student student) {
-		// TODO Auto-generated method stub
-		
+		Session session = sessionFactory.getCurrentSession();
+		session.update(student);
+				
 	}
 
 	@Override
 	public void deleteStudent(int id) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		Student student = (Student) session.load(Student.class, new Integer(id));
+		if(null != student) {
+			session.delete(student);
+		}
 		
 	}
 
 	@Override
 	public Student getStudentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Student student = (Student) session.load(Student.class, new Integer(id));
+		return student;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Student> getAllStudents() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Criteria critera = session.createCriteria(Student.class).addOrder(Order.asc("id"));
+		List<Student> studentList = critera.list();
+		return studentList;
 	}
 
 }

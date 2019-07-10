@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 
 /**
@@ -43,19 +42,22 @@ public class Student {
 	private String city;
 	
 	/** The country. */
-	@Transient
+	@Column (name = "country", length = 255)
 	private String country;
 	
-	@Transient
+	
 	/** The phone number. */
+	@Column (name = "phoneNumber", length = 255)
 	private String phoneNumber; 
 	
-	@Transient
+	
 	/** The major. */
+	@Column (name = "major", length = 255)
 	private String major;
 	
-	@Transient
+
 	/** The email address. */
+	@Column (name = "emailAddress", length = 255)
 	private String emailAddress;
 	
 

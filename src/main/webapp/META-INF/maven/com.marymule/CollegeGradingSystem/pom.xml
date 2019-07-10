@@ -39,10 +39,6 @@
 		</dependency>
 
 		<!-- SPRING SECURITY -->
-<<<<<<< HEAD
-=======
-
->>>>>>> fa1894509430e9c438929e3f6e586d4eaf02c32b
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -60,10 +56,6 @@
 		</dependency>
 
 		<!-- JPA/HIBERNATE -->
-<<<<<<< HEAD
-=======
-
->>>>>>> fa1894509430e9c438929e3f6e586d4eaf02c32b
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -74,7 +66,6 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.16.Final</version>
 		</dependency>
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -85,18 +76,6 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.3.2.RELEASE</version>
 		</dependency>
-=======
-		 <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.11.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>4.3.2.RELEASE</version>
-        </dependency>
->>>>>>> fa1894509430e9c438929e3f6e586d4eaf02c32b
 
 		<!-- JDBC/DATABASE -->
 		<dependency>
@@ -110,11 +89,7 @@
 			<version>4.3.18.RELEASE</version>
 		</dependency>
 
-<<<<<<< HEAD
 		<!-- TESTING/DEBUGGING -->
-=======
-<!-- TESTING/DEBUGGING -->
->>>>>>> fa1894509430e9c438929e3f6e586d4eaf02c32b
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
