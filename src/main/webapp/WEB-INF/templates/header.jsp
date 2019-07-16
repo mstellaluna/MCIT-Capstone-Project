@@ -7,9 +7,8 @@
 <link href="<c:url value="/resources/theme/css/bootstrap/bootstrap.min.css" />" rel="stylesheet">
 <!-- Custom CSS File -->
 <link href="<c:url value="/resources/theme/css/styles.css" />" rel="stylesheet">
-<!-- Google Font Import-->
- <link href="https://fonts.googleapis.com/css?family=Lora|Lato" rel="stylesheet">
-
+<!-- Jquery
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 
     
 

@@ -192,13 +192,21 @@ span {
 h1 {
 	height: 80px;
 	padding-top: 20px;
-	border-bottom: 1px solid;
 	text-align: center;
+	border-bottom: 1px solid;
 }
 
-p {
-	padding-top: 90px;
+h3{
+	font-size: 16px;
+	text-align: left;
+	border-bottom: 1px solid;
+	width: 100px;
 }
+
+
+/* p {
+	padding-top: 90px;
+} */
 
 .student {
 	background-color: white;
@@ -247,19 +255,19 @@ div.container.mainForm{
 	font-weight:bold;
 }
 
-div.container.studentForm, div.container.loginForm, div.container.courseForm, div.container.resultsForm, div.container.mainForm
+div.studentInfo, div.container.studentForm, div.container.loginForm, div.container.courseForm, div.container.resultsForm, div.container.mainForm
 	{
 	margin-top: 100px;
 	height: auto;
 }
 
-div.container.allStudentView, div.container.allCourseView, div.container.allResultsView
+div.studentInfo,div.container.allStudentView, div.container.allCourseView, div.container.allResultsView
 	{
 	margin-top: 120px;
-	height: 70vh;
 	height: auto;
 	padding-bottom: 15px;
 }
+div.studentInfoSummary{height: 100vh;}
 
 
 
@@ -268,10 +276,47 @@ div.container.allStudentView, div.container.allCourseView, div.container.allResu
 	padding-top: 70px;
 }
 
+.avatar{margin-top: 10px;}
+.studentID{margin-top: 25px;}
+.paymentAmount{margin-top: 30px;}
+.makePayment{margin-bottom: 10px;}
+.displayInfoTabs{margin-top: 100px;}
+.contactPanel{margin-top:30px;}
+.paymentPanel{margin-top: 50px;}
+.studentFullName{padding-top: -60px;}
+.studentInfoPanel{ 
+	width: 80%; 
+	float:right; 
+	margin-top: 15px;}
+.studentFullName,
+.studentStreetAddress,
+.studentCityCountry,
+.studentMajor{
+	text-align:left;
+	margin: 0px;
+	padding: 0px;
+}
+
+.allCourseViewStudentDetails,
+.allPaymentViewStudentDetails,
+.allResultsViewStudentDetails{
+	width: 860px;
+	margin-top: 90px;
+}
+
+
+.editStudent{float:right;}
+
+
+
+
+
+
+
 
 /*FORMS*/
 
-table{}
+
 tbody {
 	padding-top: 15px;
 }

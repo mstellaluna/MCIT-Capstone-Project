@@ -10,6 +10,6 @@ public class TeacherController {
 	
 	@RequestMapping(value = "/teacher_add")
 	public String addTeachers() {
-		return "addTeachers";
+		return "addTeacher";
 	}
 }

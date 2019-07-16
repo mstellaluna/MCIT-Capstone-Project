@@ -10,11 +10,13 @@
 			<li tabindex="0"><span><a href="<c:url value="/index" />">Home</a></span></li>
 			</security:authorize>		
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT_ADMIN')">
-			<li tabindex="0"><span><a href="<c:url value="/student/student_add" />">Student</a></span>
-			</li>
+			<li tabindex="0"><span><a href="<c:url value="/student/student_add" />">Student</a></span></li>
 			</security:authorize>
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_PROGRAM_ADMIN')">
 			<li tabindex="0"><span><a href="<c:url value="/course/course_add" />">Course</a></span></li>
+			</security:authorize>
+			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_PROGRAM_ADMIN')">
+			<li tabindex="0"><span><a href="<c:url value="/teacher/teacher_add" />">Teacher</a></span></li>
 			</security:authorize>
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')">
 			<li tabindex="0"><span><a href="<c:url value="/results/results_add" />">Results</a></span></li>

@@ -13,10 +13,10 @@
 	<%@include file="/WEB-INF/templates/nav.jsp"%>
 
 	<div class="container studentForm">
-		<h1>Add Student</h1>
-		     <c:url var="addAction" value="addStudent" />
+		<h1>Add Teacher</h1>
+		     <c:url var="addAction" value="addTeacher" />
 
-        <form:form action="${addAction}" commandName="student" method="POST">
+        <form:form action="${addAction}" commandName="teacher" method="POST">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<table>
 				<tr>
@@ -79,27 +79,17 @@
 						<form:input type="tel" cssClass="form-control" path="phoneNumber" required="required"/>
 					</td>
 				</tr>
-
 				<tr>
 					<td>
-						<form:label path="major" cssClass="col-xs-3 col-form-label mr-2">
-							<spring:message text="Major:"/>
-						</form:label>	
+						<form:label path="salary" cssClass="col-xs-3 col-form-label mr-2" >
+							<spring:message text="Salary:"/>
+						</form:label>
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="major" required="required"/>
+						<form:input type="number" cssClass="form-control" path="salary" required="required"/>
 					</td>
-				</tr>
-				<tr>
-					<td>
-						<form:label path="emailAddress" cssClass="col-xs-3 col-form-label mr-2">
-							<spring:message text="Email"/>
-						</form:label>	
-					</td>
-					<td>
-						<form:input type="emailAddress" cssClass="form-control" path="emailAddress" required="required"/>
-					</td>
-				</tr>
+				</tr>  
+				
 				<tr>
 					<td style="text-align: center;" colspan="2">
 						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Student</button>						
