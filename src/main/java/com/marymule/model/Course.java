@@ -28,8 +28,8 @@ public class Course {
 	private String courseName;
 	
 	/** The credit number. */
-	@Min(value = 1)
-	@Max(value = 8)
+	@Min(value = 1, message = "Credit number must be greater than 1")
+	@Max(value = 8, message = "Credit number must be less than 8")
 	@Column(name="creditNumber")
 	private int creditNumber;
 
@@ -38,6 +38,7 @@ public class Course {
 	 */
 	public Course() { }
 
+	
 	/**
 	 * Instantiates a new course.
 	 *
@@ -45,7 +46,8 @@ public class Course {
 	 * @param courseName the course name
 	 * @param creditNumber the credit number
 	 */
-	public Course(int id, String courseName, @Min(1) @Max(8) int creditNumber) {
+	public Course(int id, String courseName,
+			@Min(value = 1, message = "Credit number must be greater than 1") @Max(value = 8, message = "Credit number must be less than 8") int creditNumber) {
 		super();
 		this.id = id;
 		this.courseName = courseName;
@@ -60,6 +62,7 @@ public class Course {
 	public int getId() {
 		return id;
 	}
+
 
 	/**
 	 * Sets the id.

@@ -2,10 +2,9 @@ package com.marymule.daoImpl;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.TeacherDAO;
@@ -14,49 +13,35 @@ import com.marymule.model.Teacher;
 @Repository
 public class TeacherDAOImpl implements TeacherDAO{
 
-	private SessionFactory sessionFactory;
-	
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public void insertTeacher(Teacher teacher) {
-		Session session = sessionFactory.getCurrentSession();
-		session.persist(teacher);
+		em.persist(teacher);
 		
 	}
 
 	@Override
-	public void updateTeacher(Teacher teacher) {
-		Session session = sessionFactory.getCurrentSession();
-		session.update(teacher);
-		
+	public Teacher updateTeacher(Teacher teacher) {
+		return em.merge(teacher);
 	}
 
 	@Override
 	public void deleteTeacher(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Teacher teacher = (Teacher) session.get(Teacher.class, id);
-		session.delete(teacher);
+		Teacher entity = em.find(Teacher.class, id);
+		em.remove(entity);
 		
 	}
 
 	@Override
 	public Teacher getTeacherById(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Teacher teacher = (Teacher) session.get(Teacher.class, id);
-		return teacher;
+		return em.find(Teacher.class, id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<Teacher> getAllTeachers() {
-		Session session = sessionFactory.getCurrentSession();
-		Criteria criteria = session.createCriteria(Teacher.class).addOrder(Order.asc("id"));
-		List<Teacher> teacherList = criteria.list();
-		return teacherList;
+		return em.createQuery("SELECT t FROM Teacher t", Teacher.class).getResultList();
 	}
 
 }

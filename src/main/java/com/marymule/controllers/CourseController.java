@@ -1,9 +1,12 @@
 package com.marymule.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,9 +49,14 @@ public class CourseController {
 	 * @return the string
 	 */
 	@PostMapping(value = "/addCourse")
-	public String addCourse(ModelMap model, Course course) {
-				courseService.insertCourse(course);
-				return "redirect:course_list";
+	public String addCourse(@Valid Course course, BindingResult bindingResult) {
+			if (bindingResult.hasErrors()) {
+				return "addCourse";
+			}
+		
+			courseService.insertCourse(course);
+			return "redirect:course_list";
+			
 	}
 	
 	/**
@@ -60,7 +68,7 @@ public class CourseController {
 	@GetMapping(value = "/course_list")
 	public String displayAllCourses(Model model) {
 		model.addAttribute("courseList", courseService.getAllCourses());
-		 return "displayAllStudents";
+		 return "displayAllCourses";
 	}
 	
 	/**

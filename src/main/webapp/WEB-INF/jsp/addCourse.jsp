@@ -32,9 +32,12 @@
                 </tr>
                 <tr> 
               		<td>
-              			<form:label path="courseCredits" cssClass="col-xs-3 col-form-label mr-2" >
+              			<form:label path="creditNumber" cssClass="col-xs-3 col-form-label mr-2" >
 							<spring:message text="Course Credit:"/>
 						</form:label>
+              		</td>
+              		<td>
+              			<form:input type="text" cssClass="form-control" path="creditNumber" required="required"/>
               		</td>
                 </tr>
               </table>

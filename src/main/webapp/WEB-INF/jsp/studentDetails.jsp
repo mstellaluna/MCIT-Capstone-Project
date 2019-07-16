@@ -57,7 +57,7 @@
                   <th class="text-center">Course Name</th>
                   <th class="text-center">Actions</th>
                 </tr>
-                <c:forEach items="${completeList}" var="course">
+                <c:forEach items="${courseList}" var="course">
                 <tr>
                   <td class="pt-3-half">${course.id}</td>
                   <td class="pt-3-half">${course.courseName}</td>
@@ -75,12 +75,14 @@
                         <tr>
                           <th class="text-center">Course ID</th>
                           <th class="text-center">Course Name</th>
+                           <th class="text-center">Course Credits</th>
                           <th class="text-center">Actions</th>
                         </tr>
                         <c:forEach items="${completeList}" var="course">
                         <tr>
                           <td class="pt-3-half">${course.id}</td>
                           <td class="pt-3-half">${course.courseName}</td>
+                           <td class="pt-3-half">${course.creditNumber}</td>
                           <td>
                             <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course?id=${course.id}&action=edit'/> ">Edit</a></span>
                             <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course?id=${course.id}&action=delete'/> ">Delete</a></span>
