@@ -15,7 +15,7 @@
     <h1>Student Details</h1>
      <c:if test="${!empty studentList}">
     <div class="col-sm-9 panel panel-default panel-horizontal studentInfoPanel">
-    		  <span class="editStudent"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course?id=${course.id}&action=edit'/> ">Edit</a></span>
+    		  <span class="editStudent"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/edit_student/${student.id}'/> ">Edit</a></span>
             <div class="panel-body studentFullName"><p>${student.firstname} ${student.lastName }</p></div>
             <div class="panel-body studentStreetAddress"><p>${student.address}</p></div>
             <div class="panel-body studentCityCountry"><p>${student.city}, ${student.country }</p></div>
@@ -34,16 +34,17 @@
 
                
           <div class="panel panel-default contactPanel">
-            <div class="panel-heading">Contact</i></div>
+            <div class="panel-heading">Contact</div>
             <div class="panel-body">${student.phoneNumber}</div>
             <div class="panel-body"><a href="mailto:${student.emailAddress}">Send Email</a></div>
           </div>
           
           
           <div class="panel panel-default paymentPanel">
-                <div class="panel-heading">Payment Due</i></div>
+                <div class="panel-heading">Payment Due</div>
                 <div class="panel-body"><p class="paymentAmount">${student.paymentDue }</p></div>
                 <button type="submit" class="btn btn-info makePayment"  id="submit">Make a payment</button>
+        </div>
         </div>
        </div><!--/col-3-->
        <div class="row">
@@ -88,6 +89,7 @@
                         </c:forEach>  
                       </table>
                     </div> 
+                    </div>
                     <div class="row">
                       <div class="col-sm-6"><!--left col-->
                  <div class="allResultsViewStudentDetails">
@@ -116,6 +118,7 @@
              </div>       
     </div><!--/row-->
     </c:if>
+    </div>
   </body>  
   </html>
                                                       

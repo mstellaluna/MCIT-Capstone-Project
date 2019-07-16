@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marymule.model.Student;
 import com.marymule.service.StudentService;
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -30,8 +30,8 @@ public class StudentController {
 	/**
 	 * Sets the student service.
 	 *
-	 * @param studentService the new student service
-	 * 
+	 * @param modelMap the model map
+	 * @return the adds the student form
 	 */
 	
 	/**
@@ -41,8 +41,8 @@ public class StudentController {
 	 * @return the student form
 	 */
 	@GetMapping(value = "/student_add")
-	public String getStudentForm(ModelMap model) {
-		model.addAttribute("student", new Student());
+	public String getAddStudentForm(ModelMap modelMap) {
+		modelMap.addAttribute("student", new Student());
 		return "addStudent";
 	}
 	
@@ -75,8 +75,7 @@ public class StudentController {
 	 * Gets the student by id.
 	 *
 	 * @param id the id
-	 * @param model the model
-	 * @param student the student
+	 * @param modelmap the modelmap
 	 * @return the student by id
 	 */
 	
@@ -103,23 +102,6 @@ public class StudentController {
 	}
 	
 	/**
-	 * Gets the student details.
-	 *
-	 * @param id the id
-	 * @param model the model
-	 * @param student the student
-	 * @return the student details
-	 */
-	
-	@GetMapping( value = "/studentDetails")
-	public String getStudentDetails(@PathVariable("id") int id, Model model) {
-		 model.addAttribute("student", studentService.getStudentById(id));
-		 return "redirect:studentDetails";
-	}
-	
-
-	
-	/**
 	 * Delete student.
 	 *
 	 * @param id the id
@@ -130,6 +112,35 @@ public class StudentController {
 	public String deleteStudent(@RequestParam("id") int id) {
 			studentService.deleteStudent(id);
 			return "redirect:student_list";
+	}
+	
+	/**
+	 * Gets the student details.
+	 *
+	 * @param id the id
+	 * @param modelmap the modelmap
+	 * @return the student details
+	 */
+	
+	@GetMapping(value = "/student_details/{id}")
+	  public String displayStudentDetailsPage(@PathVariable("id") int id, ModelMap modelmap) { 
+		modelmap.addAttribute("student", studentService.getStudentById(id));
+		return "studentDetails";
+	
+	}
+	
+	/**
+	 * Display edit student from student details.
+	 *
+	 * @param id the id
+	 * @param modelmap the modelmap
+	 * @return the string
+	 */
+	@GetMapping(value = "/student_details/edit_student/{id}")
+	  public String displayEditStudentFromStudentDetails(@PathVariable("id") int id, ModelMap modelmap) { 
+		modelmap.addAttribute("student", studentService.getStudentById(id));
+		return "studentDetails";
+	
 	}
 	
 

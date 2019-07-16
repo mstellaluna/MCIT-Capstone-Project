@@ -40,7 +40,7 @@
               <td class="pt-3-half">${student.phoneNumber}</td>
               <td class="pt-3-half">${student.major}</td>
               <td>
-            	<span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/student/studentDetails?id=${student.id}'/> ">Details</a></span>
+            	<span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/${student.id}'/> ">Details</a></span>
                 <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/edit_student/${student.id}'/> ">Edit</a></span>
                 <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/student/delete_student?id=${student.id}'/> ">Delete</a></span>
               </td>
