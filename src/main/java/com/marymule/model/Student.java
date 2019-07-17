@@ -1,18 +1,23 @@
 package com.marymule.model;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 /**
  * The Class Student.
  */
 
-@Entity
+@Entity(name = "Student")
 @Table(name="students")
 public class Student {
 	
@@ -59,6 +64,10 @@ public class Student {
 	@Column (name = "emailAddress")
 	private String emailAddress;
 	
+	/** The student's registered courses. */
+	@OneToMany (mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OrderBy("id Asc")
+	private List<Course> registeredCourses;
 
 	/**
 	 * Instantiates a new student.

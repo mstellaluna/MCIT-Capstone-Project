@@ -37,6 +37,10 @@ public class Teacher {
 	@Column(name="city")
 	private String city;
 	
+	/** The country. */
+	@Column(name="country")
+	private String country;
+	
 	/** The phone number. */
 	@Column(name="phoneNumber")
 	private String phoneNumber;
@@ -60,17 +64,19 @@ public class Teacher {
 	 * @param lastName the last name
 	 * @param address the address
 	 * @param city the city
+	 * @param country the country
 	 * @param phoneNumber the phone number
 	 * @param salary the salary
 	 */
-	public Teacher(int id, String firstName, String lastName, String address, String city, String phoneNumber,
-			int salary) {
-		super();
+
+	public Teacher(int id, String firstName, String lastName, String address, String city, String country,
+			String phoneNumber, int salary) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.address = address;
 		this.city = city;
+		this.country = country;
 		this.phoneNumber = phoneNumber;
 		this.salary = salary;
 	}
@@ -177,6 +183,26 @@ public class Teacher {
 
 
 	/**
+	 * Gets the country.
+	 *
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+
+
+	/**
+	 * Sets the country.
+	 *
+	 * @param country the new country
+	 */
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+	/**
 	 * Gets the phone number.
 	 *
 	 * @return the phone number
@@ -222,9 +248,12 @@ public class Teacher {
 	@Override
 	public String toString() {
 		return "Teacher [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", city=" + city + ", phoneNumber=" + phoneNumber + ", salary=" + salary + "]";
+				+ ", city=" + city + ", country=" + country + ", phoneNumber=" + phoneNumber + ", salary=" + salary
+				+ "]";
 	}
+
 	
+
 	
 	
 	

@@ -49,8 +49,9 @@ public class CourseController {
 	 * @return the string
 	 */
 	@PostMapping(value = "/addCourse")
-	public String addCourse(@Valid Course course, BindingResult bindingResult) {
-			if (bindingResult.hasErrors()) {
+	public String addCourse(@Valid Course course, BindingResult result) {
+			
+			if (result.hasErrors()) {
 				return "addCourse";
 			}
 		

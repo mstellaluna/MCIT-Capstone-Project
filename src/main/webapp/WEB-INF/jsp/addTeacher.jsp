@@ -12,7 +12,7 @@
 <body>
 	<%@include file="/WEB-INF/templates/nav.jsp"%>
 
-	<div class="container studentForm">
+	<div class="container teacherForm">
 		<h1>Add Teacher</h1>
 		     <c:url var="addAction" value="addTeacher" />
 
@@ -92,8 +92,8 @@
 				
 				<tr>
 					<td style="text-align: center;" colspan="2">
-						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Student</button>						
-						<button class="btn btn-info" type="submit" name="viewAllStudents" id="submit">View All Students</button>		
+						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Teacher</button>						
+						<button class="btn btn-info" type="submit" name="viewAllStudents" id="submit">View All Teachers</button>		
 					</td>
 				</tr>
 			</table>

@@ -255,13 +255,19 @@ div.container.mainForm{
 	font-weight:bold;
 }
 
-div.studentInfo, div.container.studentForm, div.container.loginForm, div.container.courseForm, div.container.resultsForm, div.container.mainForm
+div.studentInfo, div.container.studentForm, 
+div.container.loginForm, div.container.courseForm, 
+div.container.resultsForm, div.container.mainForm,
+div.container.teacherForm
 	{
 	margin-top: 100px;
 	height: auto;
 }
 
-div.studentInfo,div.container.allStudentView, div.container.allCourseView, div.container.allResultsView
+div.studentInfo,div.container.allStudentView, 
+div.container.allCourseView, div.container.allResultsView,
+div.container.allTeacherView
+
 	{
 	margin-top: 120px;
 	height: auto;

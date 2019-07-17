@@ -2,18 +2,21 @@ package com.marymule.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * The Class Course.
  */
-@Entity
+@Entity(name = "Course")
 @Table(name="courses")
 public class Course {
 	
@@ -32,6 +35,11 @@ public class Course {
 	@Max(value = 8, message = "Credit number must be less than 8")
 	@Column(name="creditNumber")
 	private int creditNumber;
+	
+	@OneToMany (fetch = FetchType.EAGER)
+	@JoinColumn(name = "student_id")
+	private Student student;
+	
 
 	/**
 	 * Instantiates a new course.
@@ -48,7 +56,6 @@ public class Course {
 	 */
 	public Course(int id, String courseName,
 			@Min(value = 1, message = "Credit number must be greater than 1") @Max(value = 8, message = "Credit number must be less than 8") int creditNumber) {
-		super();
 		this.id = id;
 		this.courseName = courseName;
 		this.creditNumber = creditNumber;

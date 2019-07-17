@@ -31,9 +31,9 @@
               <td class="pt-3-half">${course.courseName}</td>
               <td class="pt-3-half">${course.creditNumber}</td>
               <td>
-              	<span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/${student.id}'/> ">Details</a></span>
-                <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course?id=${course.id}&action=edit'/> ">Edit</a></span>
-                <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course?id=${course.id}&action=delete'/> ">Delete</a></span>
+              	<span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/course/course_details/${course.id}'/> ">Details</a></span>
+                <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course/edit_course/${course.id}'/> ">Edit</a></span>
+                <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course/delete_course?id=${course.id}'/> ">Delete</a></span>
               </td>
             </tr> 
             </c:forEach>  
