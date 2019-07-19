@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 <title>College Grading System</title>
@@ -26,7 +28,8 @@
 						</form:label>
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="firstName" required="required"/>
+						<form:input type="text" cssClass="form-control" path="firstName"/>
+						<form:errors path="firstName" cssClass="errorMessage" />				
 					</td>
 				</tr>  
 				<tr>
@@ -36,7 +39,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="lastName" required="required"/>
+						<form:input type="text" cssClass="form-control" path="lastName"/>
+						<form:errors path="lastName" cssClass="errorMessage" />		
 					</td>
 				</tr>
 				<tr>
@@ -46,7 +50,8 @@
 						</form:label>
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="address" required="required"/>					
+						<form:input type="text" cssClass="form-control" path="address"/>
+						<form:errors path="address" cssClass="errorMessage" />				
 					</td>
 				</tr>
 				<tr>
@@ -56,7 +61,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="city" required="required"/>
+						<form:input type="text" cssClass="form-control" path="city"/>
+						<form:errors path="city" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -66,7 +72,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="country" required="required"/>
+						<form:input type="text" cssClass="form-control" path="country" />
+						<form:errors path="country" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +83,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="tel" cssClass="form-control" path="phoneNumber" required="required"/>
+						<form:input type="tel" cssClass="form-control" path="phoneNumber"/>
+						<form:errors path="phoneNumber" cssClass="errorMessage" />
 					</td>
 				</tr>
 
@@ -87,7 +95,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="major" required="required"/>
+						<form:input type="text" cssClass="form-control" path="major"/>
+						<form:errors path="major" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -97,18 +106,18 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="emailAddress" cssClass="form-control" path="emailAddress" required="required"/>
+						<form:input type="emailAddress" cssClass="form-control" path="emailAddress" />
+						<form:errors path="emailAddress" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
 					<td style="text-align: center;" colspan="2">
-						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Student</button>						
-						<button class="btn btn-info" type="submit" name="viewAllStudents" id="submit">View All Students</button>		
+						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Student</button>													
 					</td>
 				</tr>
 			</table>
 		</form:form>
+			<button class="btn btn-info" type="submit" name="viewAllStudents" id="submit">View All Students</button>
 	</div>
 </body>
-
 </html>

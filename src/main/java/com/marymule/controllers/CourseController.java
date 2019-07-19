@@ -49,9 +49,9 @@ public class CourseController {
 	 * @return the string
 	 */
 	@PostMapping(value = "/addCourse")
-	public String addCourse(@Valid Course course, BindingResult result) {
+	public String addCourse(@Valid Course course, BindingResult bindingResult) {
 			
-			if (result.hasErrors()) {
+			if (bindingResult.hasErrors()) {
 				return "addCourse";
 			}
 		
@@ -68,6 +68,7 @@ public class CourseController {
 	 */
 	@GetMapping(value = "/course_list")
 	public String displayAllCourses(Model model) {
+		
 		model.addAttribute("courseList", courseService.getAllCourses());
 		 return "displayAllCourses";
 	}
@@ -137,4 +138,14 @@ public class CourseController {
 		return "courseDetails";
 	
 	}
+	
+	/*
+	 * @GetMapping(value = "/course_add_student") public String
+	 * displayAssignCoursetoStudentPage()
+	 */
+	
+	/*
+	 * @GetMapping(value="/course_add_teacher") public String
+	 * displayAssignTeachertoCousePage
+	 */
 }

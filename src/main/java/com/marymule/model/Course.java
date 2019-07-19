@@ -7,10 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**
@@ -27,6 +29,7 @@ public class Course {
 	private int id;
 	
 	/** The course name. */
+	@NotEmpty(message = "Course name is required")
 	@Column(name="courseName")
 	private String courseName;
 	
@@ -36,7 +39,8 @@ public class Course {
 	@Column(name="creditNumber")
 	private int creditNumber;
 	
-	@OneToMany (fetch = FetchType.EAGER)
+	/** The student. */
+	@ManyToOne (fetch = FetchType.EAGER)
 	@JoinColumn(name = "student_id")
 	private Student student;
 	

@@ -25,6 +25,8 @@
 			<li tabindex="0" class="icon-results"><span><a href="<c:url value="/logout" />">Logout</a></span></li>
 			</security:authorize>			
         </ul>
+        
+        
 
         <div class="switch switch-blue">
             <input type="radio" class="switch-input" name="english-french" value="en" id="en" checked>

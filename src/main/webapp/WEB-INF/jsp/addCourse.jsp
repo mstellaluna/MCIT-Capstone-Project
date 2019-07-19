@@ -27,7 +27,8 @@
 						</form:label>
               		</td>
               		<td>
-              			<form:input type="text" cssClass="form-control" path="courseName" required="required"/>
+              			<form:input type="text" cssClass="form-control" path="courseName" />
+              			<form:errors path="courseName" cssClass="errorMessage" />
               		</td>
                 </tr>
                 <tr> 
@@ -38,7 +39,8 @@
               		</td>
               		<td>
          			
-              			<form:input type="text" cssClass="form-control" path="creditNumber" required="required"/>
+              			<form:input type="text" cssClass="form-control" path="creditNumber" />
+              			<form:errors path="creditNumber" cssClass="errorMessage" />
               			
               		</td>
                 </tr>
@@ -48,7 +50,7 @@
                
                 <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                        <button type="submit" name="addCourse" id="submit">Add Course</button>
+                        <button class="btn btn-info" type="submit" name="addCourse" id="submit">Add Course</button>
                         <button type="submit" name="viewAllCourses" id="submit">View All Courses</button>
                 </div>
                 </div>

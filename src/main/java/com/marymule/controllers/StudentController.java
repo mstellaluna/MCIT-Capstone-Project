@@ -1,9 +1,12 @@
 package com.marymule.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,10 +56,19 @@ public class StudentController {
 	 * @param student the student
 	 * @return the string
 	 */
+	
 	@PostMapping(value = "/addStudent")
-	public String addStudent(ModelMap model, Student student) {
+	public String addStudent(@Valid Student student, BindingResult bindingResult) {
+			
+			if(bindingResult.hasErrors()) {
+				return "addStudent";
+			} 
+			
+			else {
+		
 				studentService.insertStudent(student);
 				return "redirect:student_list";
+			}	
 	}
 
 	/**
@@ -136,12 +148,14 @@ public class StudentController {
 	 * @param modelmap the modelmap
 	 * @return the string
 	 */
+	
 	@GetMapping(value = "/student_details/edit_student/{id}")
 	  public String displayEditStudentFromStudentDetails(@PathVariable("id") int id, ModelMap modelmap) { 
 		modelmap.addAttribute("student", studentService.getStudentById(id));
 		return "studentDetails";
+	  }
 	
-	}
-	
+
+
 
 }

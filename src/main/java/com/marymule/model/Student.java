@@ -1,7 +1,8 @@
 package com.marymule.model;
 
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * The Class Student.
@@ -30,44 +34,53 @@ public class Student {
 	private int id;
 	
 	/** The first name. */
+	@NotEmpty(message = "First Name is required")
 	@Column(name = "firstName")
 	private String firstName;
 	
 	/** The last name. */
+	@NotEmpty(message = "Last Name is required")
 	@Column(name = "lastName")
 	private String lastName;
 	
 	/** The address. */
+	@NotEmpty(message = "Address is required")
 	@Column(name = "address")
 	private String address;
 	
 	/** The city. */
+	@NotEmpty(message = "City is required")
 	@Column (name = "city")
 	private String city;
 	
 	/** The country. */
+	@NotEmpty(message = "Country is required")
 	@Column (name = "country")
 	private String country;
 	
 	
 	/** The phone number. */
+	@NotEmpty(message = "Phone Number is required")
 	@Column (name = "phoneNumber")
 	private String phoneNumber; 
 	
 	
 	/** The major. */
+	@NotEmpty(message = "Major is required")
 	@Column (name = "major")
 	private String major;
 	
 
 	/** The email address. */
+	@NotEmpty(message = "Email is required")
+	@Email(message="Please enter a valid email address")
 	@Column (name = "emailAddress")
 	private String emailAddress;
 	
 	/** The student's registered courses. */
 	@OneToMany (mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
 	@OrderBy("id Asc")
-	private List<Course> registeredCourses;
+	private Set<Course> registeredCourses = new HashSet<>();
 
 	/**
 	 * Instantiates a new student.

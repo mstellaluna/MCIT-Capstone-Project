@@ -26,7 +26,8 @@
 						</form:label>
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="firstName" required="required"/>
+						<form:input type="text" cssClass="form-control" path="firstName" />
+						<form:errors path="firstName" cssClass="errorMessage" />
 					</td>
 				</tr>  
 				<tr>
@@ -36,7 +37,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="lastName" required="required"/>
+						<form:input type="text" cssClass="form-control" path="lastName" />
+						<form:errors path="lastName" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -46,7 +48,8 @@
 						</form:label>
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="address" required="required"/>					
+						<form:input type="text" cssClass="form-control" path="address" />
+						<form:errors path="address" cssClass="errorMessage" />					
 					</td>
 				</tr>
 				<tr>
@@ -56,7 +59,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="city" required="required"/>
+						<form:input type="text" cssClass="form-control" path="city" />
+						<form:errors path="city" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -66,7 +70,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="text" cssClass="form-control" path="country" required="required"/>
+						<form:input type="text" cssClass="form-control" path="country" />
+						<form:errors path="country" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +81,8 @@
 						</form:label>	
 					</td>
 					<td>
-						<form:input type="tel" cssClass="form-control" path="phoneNumber" required="required"/>
+						<form:input type="tel" cssClass="form-control" path="phoneNumber" />
+						<form:errors path="phoneNumber" cssClass="errorMessage" />
 					</td>
 				</tr>
 				<tr>
@@ -86,7 +92,8 @@
 						</form:label>
 					</td>
 					<td>
-						<form:input type="number" cssClass="form-control" path="salary" required="required"/>
+						<form:input type="number" cssClass="form-control" path="salary" />
+						<form:errors path="salary" cssClass="errorMessage" />
 					</td>
 				</tr>  
 				

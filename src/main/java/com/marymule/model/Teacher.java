@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -22,30 +26,38 @@ public class Teacher {
 	private int id;
 	
 	/** The first name. */
+	@NotEmpty(message = "First Name is required")
 	@Column(name="firstName")
 	private String firstName;
 	
 	/** The last name. */
+	@NotEmpty(message = "Last Name is required")
 	@Column(name="lastName")
 	private String lastName;
 	
 	/** The address. */
+	@NotEmpty(message = "Address is required")
 	@Column(name="address")
 	private String address;
 	
 	/** The city. */
+	@NotEmpty(message = "Address is required")
 	@Column(name="city")
 	private String city;
 	
 	/** The country. */
+	@NotEmpty(message = "Country is required")
 	@Column(name="country")
 	private String country;
 	
 	/** The phone number. */
+	@NotEmpty(message = "Phone Number is required")
 	@Column(name="phoneNumber")
 	private String phoneNumber;
 	
 	/** The salary. */
+	@NotNull(message = "Salary is required")
+	@Min(value = 1)
 	@Column(name="salary")
 	private int salary;
 	

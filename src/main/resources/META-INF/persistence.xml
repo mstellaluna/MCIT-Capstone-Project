@@ -23,11 +23,5 @@
       <property name="hibernate.use_sql_comments" value="true" />
     </properties>
 
-<!-- 
-	<class>com.marymule.model.Student</class>
-    <class>com.marymule.model.Course</class>
-    <class>com.marymule.model.Results</class>
-    <class>com.marymule.model.Teacher</class> -->
-    
 </persistence-unit>
 </persistence>

@@ -7,6 +7,13 @@ body {
 	height: auto;
 }
 
+.errorMessage {
+	font-size: 12px;
+	font-weight: bold;
+	color: red;
+    float:right;
+}
+
 /* SIDE NAVIGATION MENU */
 main {
 	position: relative;
@@ -223,14 +230,14 @@ button[type="reset"] {
 	display: inline-block;
 }
 
-input[type="text"] {
+/* input[type="text"] {
 	float: right;
-}
+} */
 
 form {
 	padding-top: 70px;
 	padding-bottom: 70px;
-	padding-left: 120px;
+	padding-left: 120px; 
 }
 
 .form-control {

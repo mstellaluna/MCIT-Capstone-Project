@@ -22,6 +22,7 @@
             <div class="panel-body studentMajor"><p>${student.major}</p></div>
 
           </div>
+      </c:if>     
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
               
@@ -42,7 +43,7 @@
           
           <div class="panel panel-default paymentPanel">
                 <div class="panel-heading">Payment Due</div>
-                <div class="panel-body"><p class="paymentAmount">${student.paymentDue }</p></div>
+                <div class="panel-body"><p class="paymentAmount">${payment.paymentDue}</p></div>
                 <button type="submit" class="btn btn-info makePayment"  id="submit">Make a payment</button>
         </div>
         </div>
@@ -61,6 +62,7 @@
                 <tr>
                   <td class="pt-3-half">${course.id}</td>
                   <td class="pt-3-half">${course.courseName}</td>
+                  <td class="pt-3-half">${course.creditNumber}</td>
                   <td>
                     <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course?id=${course.id}&action=edit'/> ">Edit</a></span>
                     <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course?id=${course.id}&action=delete'/> ">Delete</a></span>
@@ -78,9 +80,9 @@
                            <th class="text-center">Course Credits</th>
                           <th class="text-center">Actions</th>
                         </tr>
-                        <c:forEach items="${completeList}" var="course">
+                        <c:forEach items="${paymentList}" var="payment">
                         <tr>
-                          <td class="pt-3-half">${course.id}</td>
+                          <td class="pt-3-half">${payment.id}</td>
                           <td class="pt-3-half">${course.courseName}</td>
                            <td class="pt-3-half">${course.creditNumber}</td>
                           <td>
@@ -119,7 +121,7 @@
              </div>
              </div>       
     </div><!--/row-->
-    </c:if>
+   
     </div>
   </body>  
   </html>
