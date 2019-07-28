@@ -150,8 +150,8 @@ public class StudentController {
 	 */
 	
 	@GetMapping(value = "/student_details/edit_student/{id}")
-	  public String displayEditStudentFromStudentDetails(@PathVariable("id") int id, ModelMap modelmap) { 
-		modelmap.addAttribute("student", studentService.getStudentById(id));
+	  public String displayEditStudentFromStudentDetails(@PathVariable("id") int id, Model model) { 
+		model.addAttribute("studentList", studentService.getStudentById(id));
 		return "studentDetails";
 	  }
 	

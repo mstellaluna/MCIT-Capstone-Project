@@ -14,11 +14,21 @@
 
 	<div class="container teacherForm">
 		<h1>Add Teacher</h1>
-		     <c:url var="addAction" value="addTeacher" />
+		     <c:url var="addAction" value="editTeacher" />
 
         <form:form action="${addAction}" commandName="teacher" method="POST">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<table>
+				<tr>
+					<td>
+						<form:label path="id" cssClass="col-xs-3 col-form-label mr-2" >
+							<spring:message text="Teacher ID:"/>
+						</form:label>
+					</td>
+					<td>
+						<form:input type="number" cssClass="form-control" path="id" value="${teacher.id}" disabled="true"/>
+					</td>
+				</tr>
 				<tr>
 					<td>
 						<form:label path="firstName" cssClass="col-xs-3 col-form-label mr-2" >
@@ -99,8 +109,7 @@
 				
 				<tr>
 					<td style="text-align: center;" colspan="2">
-						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Teacher</button>						
-	
+						<button class="btn btn-primary" type="submit" name="submitTeacherForm" id="submit">Add Teacher</button>								
 					</td>
 				</tr>
 			</table>

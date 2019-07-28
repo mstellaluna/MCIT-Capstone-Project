@@ -1,16 +1,20 @@
 package com.marymule.model;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * The Class Results.
  */
 public class Results {
 	
-	/** The student id. */
-	private int studentId;
+	@ManyToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
 	
-	/** The course id. */
-	private int courseId;
+	@ManyToOne
+    @JoinColumn(name = "course_id")
+	private Course course;
 	
 	/** The session. */
 	private String session;
@@ -19,111 +23,55 @@ public class Results {
 	private int mark;
 	
 	
-	/**
-	 * Instantiates a new results.
-	 *
-	 * @param studentId the student id
-	 * @param courseId the course id
-	 * @param session the session
-	 * @param mark the mark
-	 */
-	public Results(int studentId, int courseId, String session, int mark) {
+
+	public Results() { }
+
+    public Results(Student student, Course course, String session, int mark) {
 		super();
-		this.studentId = studentId;
-		this.courseId = courseId;
+		this.student = student;
+		this.course = course;
 		this.session = session;
 		this.mark = mark;
 	}
 
-
-	/**
-	 * Gets the student id.
-	 *
-	 * @return the student id
-	 */
-	public int getStudentId() {
-		return studentId;
+	public Student getStudent() {
+		return student;
 	}
 
-
-	/**
-	 * Sets the student id.
-	 *
-	 * @param studentId the new student id
-	 */
-	public void setStudentId(int studentId) {
-		this.studentId = studentId;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
-
-	/**
-	 * Gets the course id.
-	 *
-	 * @return the course id
-	 */
-	public int getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
-
-	/**
-	 * Sets the course id.
-	 *
-	 * @param courseId the new course id
-	 */
-	public void setCourseId(int courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
-
-	/**
-	 * Gets the session.
-	 *
-	 * @return the session
-	 */
 	public String getSession() {
 		return session;
 	}
 
-
-	/**
-	 * Sets the session.
-	 *
-	 * @param session the new session
-	 */
 	public void setSession(String session) {
 		this.session = session;
 	}
 
-
-	/**
-	 * Gets the mark.
-	 *
-	 * @return the mark
-	 */
 	public int getMark() {
 		return mark;
 	}
 
-
-	/**
-	 * Sets the mark.
-	 *
-	 * @param mark the new mark
-	 */
 	public void setMark(int mark) {
 		this.mark = mark;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		return "Results [studentId=" + studentId + ", courseId=" + courseId + ", session=" + session + ", mark=" + mark
-				+ "]";
+		return "Results [student=" + student + ", course=" + course + ", session=" + session + ", mark=" + mark + "]";
 	}
+	
+    
 	
 	
 	

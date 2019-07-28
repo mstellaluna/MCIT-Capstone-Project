@@ -12,4 +12,9 @@ public interface CourseService {
 	Course getCourseById(int id);
 	List<Course> getAllCourses();
 
+    public boolean registerStudent(int courseID, int studentID);
+    public boolean registerTeacher(int courseID, int teacherID);
+  //  public boolean unregisterStudent(int courseID, int studentID);
+ //   public boolean unregisterTeacher(int courseID, int teacherID);  
+
 }

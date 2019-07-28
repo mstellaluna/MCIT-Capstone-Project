@@ -1,5 +1,7 @@
 package com.marymule.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.marymule.forms.AssignTeachertoCourseForm;
+import com.marymule.forms.RegisterStudentToCourseForm;
 import com.marymule.model.Course;
+import com.marymule.model.Student;
+import com.marymule.model.Teacher;
 import com.marymule.service.CourseService;
+import com.marymule.service.StudentService;
+import com.marymule.service.TeacherService;
 
 
 /**
@@ -28,6 +36,13 @@ public class CourseController {
 	/** The course service. */
 	@Autowired
 	private CourseService courseService;
+	
+	@Autowired
+	private StudentService studentService;
+	
+	@Autowired
+	private TeacherService teacherService;
+	
 
 	/**
 	 * Gets the adds the course form.
@@ -139,13 +154,54 @@ public class CourseController {
 	
 	}
 	
-	/*
-	 * @GetMapping(value = "/course_add_student") public String
-	 * displayAssignCoursetoStudentPage()
-	 */
 	
-	/*
-	 * @GetMapping(value="/course_add_teacher") public String
-	 * displayAssignTeachertoCousePage
-	 */
+	  @GetMapping(value = "/course_add_student") 
+	  public String displayAssignCoursetoStudentPage(Model model) {
+
+		  List<Student> studentList = studentService.getAllStudents();
+		  List<Course> courseList = courseService.getAllCourses();
+		  		
+		  model.addAttribute("studentList", studentList);
+		  model.addAttribute("courseList", courseList);
+		  return "addStudentToCourse";
+	  }
+	  	  
+	  @PostMapping(value = "/registerStudentToCourse")
+	  public String registerStudentToCourse(Model model, @ModelAttribute("registration") @Valid RegisterStudentToCourseForm form, BindingResult bindingResult) {
+
+		  if(bindingResult.hasErrors()) {
+			  model.addAttribute("form",form);
+			  return "addStudentToCourse";
+			  
+		  }
+		  courseService.registerStudent(form.getCourseId(), form.getStudentId());	
+		  return "addStudentToCourse";
+	  }
+
+	  
+	  @GetMapping(value = "/course_add_teacher")
+	  public String displayAssignTeacherToCoursePageString(Model model) {
+		 
+		  List<Teacher> teacherList = teacherService.getAllTeachers();
+		  List<Course> courseList = courseService.getAllCourses();
+		  
+		  model.addAttribute("teacherList", teacherList);
+		  model.addAttribute("courseList", courseList);
+		  return "addTeacherToCourse";
+		  	  
+	  }
+	  
+	  @PostMapping(value = "/assignTeachertoCourse")
+	  public String assignTeachertoCourse(Model model, @ModelAttribute("registration") @Valid AssignTeachertoCourseForm form, BindingResult bindingResult) {
+		  if (bindingResult.hasErrors()) {
+			 model.addAttribute("form", form);
+			 return "addTeacherToCourse";
+		  }
+		  
+		  courseService.registerTeacher(form.getCourseId(), form.getTeacherId());
+		  model.addAttribute("message", "Teacher was added successfully");
+		  return "addTeacherToCourse";
+	  }
+	
+
 }

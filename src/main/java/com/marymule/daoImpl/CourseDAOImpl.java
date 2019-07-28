@@ -46,4 +46,6 @@ public class CourseDAOImpl implements CourseDAO {
 		return em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
 	}
 
+
+
 }

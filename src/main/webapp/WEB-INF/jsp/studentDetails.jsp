@@ -15,10 +15,10 @@
     <h1>Student Details</h1>
      <c:if test="${!empty studentList}">
     <div class="col-sm-9 panel panel-default panel-horizontal studentInfoPanel">
-    		  <span class="editStudent"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/edit_student/${student.id}'/> ">Edit</a></span>
+    		<span class="editStudent"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/edit_student/${student.id}'/> ">Edit</a></span>
             <div class="panel-body studentFullName"><p>${student.firstname} ${student.lastName }</p></div>
             <div class="panel-body studentStreetAddress"><p>${student.address}</p></div>
-            <div class="panel-body studentCityCountry"><p>${student.city}, ${student.country }</p></div>
+            <div class="panel-body studentCityCountry"><p>${student.city}, ${student.country}</p></div>
             <div class="panel-body studentMajor"><p>${student.major}</p></div>
 
           </div>
@@ -58,7 +58,7 @@
                   <th class="text-center">Course Name</th>
                   <th class="text-center">Actions</th>
                 </tr>
-                <c:forEach items="${courseList}" var="course">
+                <c:forEach items="${enrolledList}" var="enrolled">
                 <tr>
                   <td class="pt-3-half">${course.id}</td>
                   <td class="pt-3-half">${course.courseName}</td>

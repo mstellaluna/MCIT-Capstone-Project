@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,30 +16,36 @@
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
 <div class="container studentForm">
-         <form action="student" method="post">
-            <div class="form-group row">
-                <select id="student_names" class=" student_names_dropdown custom-select custom-select-lg mb-3">
-                    <option selected>Select Student</option>
-                    <c:forEach items="studentList" var="student">
-                    <option value="">${student.id} ${student.firstName} ${student.lastName}</option>
-                </c:forEach>    
-                  </select>
-            </div>
-            <div class="form-group row">
-                <select id="course_names" class=" course_names_dropdown custom-select custom-select-lg mb-3">
-                    <option selected>Select Course</option>
-                    <c:forEach items="courseList" var="student">
-                    <option value="">${course.id} ${course.courseName}</option>
-                </c:forEach>    
-                  </select>
-            </div>
-            <div class="form-group row">
+
+ <h1>Teacher Assignment</h1>
+          <c:url var="addAction" value="assignTeachertoCourse" />
+            
+            <form:form action="${addAction}" modelAttribute="AssignTeacherToCourse" method="POST">  
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
+          
+      		<div class="form-group row"> 
+          	<select id="teacherId" name="teacherId" class=" student_names_dropdown custom-select custom-select-lg mb-3">
+            	<option value="">Select Teacher</option>
+					<c:forEach items="${teacherList}" var="teacher">
+						<option value="${teacher.id}">${teacher.firstName} ${teacher.lastName}</option>
+					</c:forEach>
+			</select>
+           </div>
+           
+             <div class="form-group row"> 
+          	<select id="courseId" name="courseId" class=" student_names_dropdown custom-select custom-select-lg mb-3">
+            	<option value="">Select Course</option>
+					<c:forEach items="${courseList}" var="course">
+						<option value="${course.id}">${course.courseName} </option>
+					</c:forEach>
+			</select>
+           </div>     
+           <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                    <button type="submit" name="updateStudent" id="submit">Assign Student</button>
+                    <button type="submit" name="addTeacher" id="submit">Assign Teacher</button>
                 </div>
             </div>
-        </form>
-
+            </form:form>
 
 </div>
 </body>

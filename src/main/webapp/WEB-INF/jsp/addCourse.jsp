@@ -51,7 +51,6 @@
                 <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
                         <button class="btn btn-info" type="submit" name="addCourse" id="submit">Add Course</button>
-                        <button type="submit" name="viewAllCourses" id="submit">View All Courses</button>
                 </div>
                 </div>
                 </form:form>
