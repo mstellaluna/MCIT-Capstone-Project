@@ -13,10 +13,10 @@
 <body>
 <div class="container bootstrap snippet studentForm">
     <h1>Student Details</h1>
-     <c:if test="${!empty studentList}">
+     <c:if test="${!empty student}">
     <div class="col-sm-9 panel panel-default panel-horizontal studentInfoPanel">
-    		<span class="editStudent"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/edit_student/${student.id}'/> ">Edit</a></span>
-            <div class="panel-body studentFullName"><p>${student.firstname} ${student.lastName }</p></div>
+    		<span class="editStudent"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/edit_student/${student.id}'/> ">Edit</a></span>
+            <div class="panel-body studentFullName"><p>${student.firstName} ${student.lastName }</p></div>
             <div class="panel-body studentStreetAddress"><p>${student.address}</p></div>
             <div class="panel-body studentCityCountry"><p>${student.city}, ${student.country}</p></div>
             <div class="panel-body studentMajor"><p>${student.major}</p></div>
@@ -51,21 +51,25 @@
        <div class="row">
             <div class="col-sm-6"><!--left col-->
        <div class="allCourseViewStudentDetails">
-            <h3 class="studentDetailsHeaders"> All Courses</h3>
+            <h3 class="studentDetailsHeaders"> Registered Courses</h3>
+      
+            <p>${emptyCourseList}</p>
             <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
                   <th class="text-center">Course ID</th>
                   <th class="text-center">Course Name</th>
+                  <th class="text-center">Course Credits</th>
                   <th class="text-center">Actions</th>
                 </tr>
-                <c:forEach items="${enrolledList}" var="enrolled">
+                <c:forEach items="${courseList}" var="course">
                 <tr>
                   <td class="pt-3-half">${course.id}</td>
                   <td class="pt-3-half">${course.courseName}</td>
                   <td class="pt-3-half">${course.creditNumber}</td>
                   <td>
-                    <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course?id=${course.id}&action=edit'/> ">Edit</a></span>
-                    <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course?id=${course.id}&action=delete'/> ">Delete</a></span>
+                     <span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/course/course_details/${course.id}'/> ">Details</a></span>
+                	 <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course/edit_course/${course.id}'/> ">Edit</a></span>
+                	 <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course/course_remove_student/${course.id}/${student.id}'/> ">Delete</a></span>
                   </td>
                 </tr> 
                 </c:forEach>  
@@ -86,8 +90,8 @@
                           <td class="pt-3-half">${course.courseName}</td>
                            <td class="pt-3-half">${course.creditNumber}</td>
                           <td>
-                            <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course?id=${course.id}&action=edit'/> ">Edit</a></span>
-                            <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course?id=${course.id}&action=delete'/> ">Delete</a></span>
+                            <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/course/edit_course/${course.id}'/> ">Edit</a></span>
+                            <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/course_remove_student/${course.id}/${student.id}'/> ">Delete</a></span>
                           </td>
                         </tr> 
                         </c:forEach>  

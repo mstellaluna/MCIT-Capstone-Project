@@ -46,17 +46,18 @@ public class CourseServiceImpl implements CourseService{
 		
 	}
 
-	
 	@Override
 	public Course getCourseById(int id) {
 		return courseDAO.getCourseById(id);
 	}
+	
 
 	@Override
 	public List<Course> getAllCourses() {
 		return courseDAO.getAllCourses();
 	}
-
+	
+	
 
 	@Override
 	public boolean registerStudent(int courseID, int studentID) {
@@ -65,7 +66,7 @@ public class CourseServiceImpl implements CourseService{
         for(Student student : students) 
             if(student.getId() == studentID)
                 return false;
-        course.getStudentsRegistered().add(studentDAO.getStudentById(studentID));       
+        course.getStudentsRegistered().add(studentDAO.getStudentById(studentID));  
         this.updateCourse(course);
         return true;
 	}
@@ -82,5 +83,53 @@ public class CourseServiceImpl implements CourseService{
 	        this.updateCourse(course);
 	        return true;
 	}
+
+
+	@Override
+	public boolean unregisterStudent(int courseID, int studentID) {
+		 Course course = this.getCourseById(courseID);
+	        if(course.getStudentsRegistered().remove(studentDAO.getStudentById(studentID))) {
+	            courseDAO.updateCourse(course);
+	            return true;
+	        }
+	        return false;
+	}
+
+
+	@Override
+	public boolean unregisterTeacher(int courseID, int teacherID) {
+	     Course course = this.getCourseById(courseID);
+	        if(course.getTeachersRegistered().remove(teacherDAO.getTeacherById(teacherID))) {
+	            courseDAO.updateCourse(course);
+	            return true;
+	        }
+	        return false;
+	}
+
+	@Override
+	public Set<Student> getStudentsAssignedToCourse(int id) {
+		return courseDAO.getStudentsAssignedToCourse(id);
+	}
+
+
+	@Override
+	public Set<Teacher> getTeachersAssignedToCourse(int id) {
+		return courseDAO.getTeachersAssignedToCourse(id);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -23,21 +23,23 @@ public class ResultsDAOImpl implements ResultsDAO{
 	}
 
 	@Override
-	public void deleteResults(Results results) {
+	public void deleteResults(int id) {
+		Results entity = em.find(Results.class, id);
+		em.remove(entity);
 			
 		
 	}
 
 	@Override
 	public Results updateResults(Results results) {
-		return results;
+		return em.merge(results);
 
 		
 	}
 
 	@Override
-	public Results getResultsById(int student_id) {
-		return em.find(Results.class, student_id);
+	public Results getResultsById(int id) {
+		return em.find(Results.class, id);
 	}
 
 	@Override

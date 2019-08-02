@@ -1,11 +1,23 @@
 package com.marymule.model;
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.*;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -74,9 +86,14 @@ public class Student {
 	    @JoinTable(name = "student_in_course",
 	            joinColumns = { @JoinColumn(name="course_id") },
 	            inverseJoinColumns = { @JoinColumn(name = "student_id") })
-	    private Set<Student> studentsRegistered = new HashSet<>();
+	    private Set<Course> coursesRegistered = new HashSet<>();
 
-
+	    @OneToMany(mappedBy = "studentResult")
+	    private List<Results> results = new ArrayList<>();
+	    
+	    @OneToMany(mappedBy = "studentPayments")
+	    private List<Payment> payments = new ArrayList<>();
+	    
 	/**
 	 * Instantiates a new student.
 	 */
@@ -173,24 +190,42 @@ public class Student {
 
 
 
-	public Set<Student> getStudentsRegistered() {
-		return studentsRegistered;
+	public Set<Course> getCoursesRegistered() {
+		return coursesRegistered;
 	}
 
 
 
-	public void setStudentsRegistered(Set<Student> studentsRegistered) {
-		this.studentsRegistered = studentsRegistered;
+	public void setCoursesRegistered(Set<Course> coursesRegistered) {
+		this.coursesRegistered = coursesRegistered;
 	}
 
 
 
+	public List<Results> getResults() {
+		return results;
+	}
+
+
+
+	public void setResults(List<Results> results) {
+		this.results = results;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ ", city=" + city + ", country=" + country + ", phoneNumber=" + phoneNumber + ", major=" + major
+				+ ", emailAddress=" + emailAddress + ", coursesRegistered=" + coursesRegistered + ", results=" + results
+				+ "]";
+	}
 
 	
-	
 
 
-	}
+}
 
 
 	

@@ -55,7 +55,7 @@
 				</table>
              <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                    <button type="submit" name="updateCourse" id="submit">Update Course</button>
+                    <button class="btn btn-primary" type="submit" name="updateCourse" id="submit">Update Course</button>
                 </div>
                 </div>
         </form:form>

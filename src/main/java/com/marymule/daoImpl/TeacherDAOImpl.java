@@ -1,6 +1,7 @@
 package com.marymule.daoImpl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.TeacherDAO;
+import com.marymule.model.Course;
 import com.marymule.model.Teacher;
 
 @Repository
@@ -42,6 +44,12 @@ public class TeacherDAOImpl implements TeacherDAO{
 	@Override
 	public List<Teacher> getAllTeachers() {
 		return em.createQuery("SELECT t FROM Teacher t", Teacher.class).getResultList();
+	}
+
+	@Override
+	public Set<Course> getTeacherAssignedCourses(int id) {
+		Teacher entity = em.find(Teacher.class, id);
+		return entity.getCoursesRegistered();
 	}
 
 }

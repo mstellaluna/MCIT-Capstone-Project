@@ -1,52 +1,89 @@
 package com.marymule.serviceImpl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.marymule.dao.CourseDAO;
+import com.marymule.dao.ResultsDAO;
 import com.marymule.dao.StudentDAO;
+import com.marymule.model.Course;
+import com.marymule.model.Results;
 import com.marymule.model.Student;
+import com.marymule.service.CourseService;
+import com.marymule.service.ResultsService;
 import com.marymule.service.StudentService;
 
 @Service
+@org.springframework.transaction.annotation.Transactional
 public class StudentServiceImpl implements StudentService{
 	
     @Autowired
 	private StudentDAO studentDAO; 
 	
+    @Autowired
+	private CourseDAO courseDAO; 
+    
+    @Autowired
+   	private CourseService courseService; 
+    
+    @Autowired
+	private ResultsDAO resultsDAO;
 
-    @org.springframework.transaction.annotation.Transactional
+    @Autowired
+   	private ResultsService resultsService;
+   
 	@Override
 	public void insertStudent(Student student) {
 		studentDAO.insertStudent(student);
 		
 	}
 
-    @org.springframework.transaction.annotation.Transactional
+ 
 	@Override
 	public void updateStudent(Student student) {
 		studentDAO.updateStudent(student);
 		
 	}
 	
-    @org.springframework.transaction.annotation.Transactional
+
 	@Override
 	public void deleteStudent(int id) {
+		Student student = studentDAO.getStudentById(id);
+		List<Course> courseList = courseDAO.getAllCourses();
+		for (Course course : courseList) 
+			if(student.getCoursesRegistered().contains(course))
+				courseService.unregisterStudent(course.getId(), id);
+			
+		List<Results> resultsList = resultsDAO.getAllResults();
+		for (Results result : resultsList) 
+			if(result.getStudentResult().equals(student)) 
+				resultsService.deleteResults(result.getId(), result);
+						
 		studentDAO.deleteStudent(id);
-		
+			
 	}
 
-    @org.springframework.transaction.annotation.Transactional
+
 	@Override
 	public Student getStudentById(int id) {
 		return studentDAO.getStudentById(id);
 	}
 	
-    @org.springframework.transaction.annotation.Transactional
+ 
 	@Override
 	public List<Student> getAllStudents() {
 		return studentDAO.getAllStudents();
 	}
+
+
+	@Override
+	public Set<Course> getStudentsRegisteredCourses(int id) {
+		return studentDAO.getStudentsRegisteredCourses(id);
+	}
+
+
 
 }

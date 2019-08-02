@@ -6,7 +6,7 @@
             <img src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
         </header>
         <ul>
-        <security:authorize access="hasRole('ROLE_USER')">
+      		<security:authorize access="hasRole('ROLE_USER')">
 			<li tabindex="0"><span><a href="<c:url value="/index" />">Home</a></span></li>
 			</security:authorize>		
 			<security:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STUDENT_ADMIN')">

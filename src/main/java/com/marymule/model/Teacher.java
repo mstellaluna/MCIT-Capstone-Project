@@ -73,7 +73,7 @@ public class Teacher {
 	    @JoinTable(name = "teacher_assigned_course",
 	            joinColumns = { @JoinColumn(name="course_id") },
 	            inverseJoinColumns = { @JoinColumn(name = "teacher_id") })
-	    private Set<Course> teachersRegistered = new HashSet<>();
+	    private Set<Course> coursesRegistered = new HashSet<>();
 	
 	
 	/**
@@ -268,16 +268,29 @@ public class Teacher {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	public Set<Course> getCoursesRegistered() {
+		return coursesRegistered;
+	}
+
+
+	public void setCoursesRegistered(Set<Course> coursesRegistered) {
+		this.coursesRegistered = coursesRegistered;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Teacher [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
 				+ ", city=" + city + ", country=" + country + ", phoneNumber=" + phoneNumber + ", salary=" + salary
-				+ "]";
+				+ ", coursesRegistered=" + coursesRegistered + "]";
 	}
 
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+
+	
 	
 
 	

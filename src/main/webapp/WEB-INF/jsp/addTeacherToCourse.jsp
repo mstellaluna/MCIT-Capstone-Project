@@ -20,10 +20,11 @@
  <h1>Teacher Assignment</h1>
           <c:url var="addAction" value="assignTeachertoCourse" />
             
-            <form:form action="${addAction}" modelAttribute="AssignTeacherToCourse" method="POST">  
+            <form:form action="${addAction}" modelAttribute="AssignTeacherToCourseForm" method="POST">  
           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
           
       		<div class="form-group row"> 
+      			<p>${emptyTeacherList}</p>
           	<select id="teacherId" name="teacherId" class=" student_names_dropdown custom-select custom-select-lg mb-3">
             	<option value="">Select Teacher</option>
 					<c:forEach items="${teacherList}" var="teacher">
@@ -31,8 +32,9 @@
 					</c:forEach>
 			</select>
            </div>
-           
+         
              <div class="form-group row"> 
+               	<p>${emptyCourseList}</p>
           	<select id="courseId" name="courseId" class=" student_names_dropdown custom-select custom-select-lg mb-3">
             	<option value="">Select Course</option>
 					<c:forEach items="${courseList}" var="course">
@@ -42,7 +44,7 @@
            </div>     
            <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                    <button type="submit" name="addTeacher" id="submit">Assign Teacher</button>
+                    <button class="btn btn-primary" type="submit" name="addTeacher" id="submit">Assign Teacher</button>
                 </div>
             </div>
             </form:form>

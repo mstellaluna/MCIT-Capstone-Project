@@ -16,7 +16,10 @@
 
     <div class="container allStudentView">
         <h1>All Students</h1>
-         <c:if test="${!empty studentList}">
+        <c:if test="${empty studentList}">
+       		<p>${emptyStudentList}</p>
+ 		</c:if>
+ 		<c:if test="${!empty studentList}">
         <table class="table table-bordered table-responsive-md table-striped text-center">
             <tr>
               <th class="text-center">Student ID</th>
@@ -42,7 +45,7 @@
               <td>
             	<span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/student/student_details/${student.id}'/> ">Details</a></span>
                 <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/student/edit_student/${student.id}'/> ">Edit</a></span>
-                <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/student/delete_student?id=${student.id}'/> ">Delete</a></span>
+                <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/student/delete_student/${student.id}'/> ">Delete</a></span>
               </td>
             </tr> 
             </c:forEach>  

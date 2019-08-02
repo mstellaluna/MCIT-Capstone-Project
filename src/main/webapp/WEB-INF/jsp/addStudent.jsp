@@ -117,7 +117,6 @@
 				</tr>
 			</table>
 		</form:form>
-			<button class="btn btn-info" type="submit" name="viewAllStudents" id="submit">View All Students</button>
 	</div>
 </body>
 </html>

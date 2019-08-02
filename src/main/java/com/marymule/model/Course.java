@@ -1,7 +1,9 @@
 package com.marymule.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -14,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -59,6 +62,8 @@ public class Course implements Serializable{
 	            inverseJoinColumns = { @JoinColumn(name = "teacher_id") })
 	    private Set<Teacher> teachersRegistered = new HashSet<>();
 	
+	    @OneToMany(mappedBy = "courseResult")
+	    private List<Results> results = new ArrayList<>();
 
 	/**
 	 * Instantiates a new course.
@@ -121,6 +126,16 @@ public class Course implements Serializable{
 
 	public void setTeachersRegistered(Set<Teacher> teachersRegistered) {
 		this.teachersRegistered = teachersRegistered;
+	}
+
+
+	public List<Results> getResults() {
+		return results;
+	}
+
+
+	public void setResults(List<Results> results) {
+		this.results = results;
 	}
 
 

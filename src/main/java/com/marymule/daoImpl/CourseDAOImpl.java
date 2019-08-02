@@ -1,6 +1,7 @@
 package com.marymule.daoImpl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.CourseDAO;
 import com.marymule.model.Course;
+import com.marymule.model.Student;
+import com.marymule.model.Teacher;
 
 @Repository
 public class CourseDAOImpl implements CourseDAO {
@@ -41,10 +44,34 @@ public class CourseDAOImpl implements CourseDAO {
 		return em.find(Course.class,id);
 	}
 
+
 	@Override
 	public List<Course> getAllCourses() {
 		return em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
 	}
+
+
+	@Override
+	public Set<Student> getStudentsAssignedToCourse(int id) {
+		Course entity =  em.find(Course.class, id);
+		return entity.getStudentsRegistered();
+	}
+
+	@Override
+	public Set<Teacher> getTeachersAssignedToCourse(int id) {
+		Course entity = em.find(Course.class, id);
+		return entity.getTeachersRegistered();
+	}
+
+
+	
+	
+
+
+
+
+	
+	
 
 
 

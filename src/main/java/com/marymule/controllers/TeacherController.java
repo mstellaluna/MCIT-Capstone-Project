@@ -1,5 +1,7 @@
 package com.marymule.controllers;
 
+import java.util.Set;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.marymule.model.Course;
 import com.marymule.model.Teacher;
+import com.marymule.service.CourseService;
 import com.marymule.service.TeacherService;
 
 @Controller
@@ -24,6 +28,8 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
+	@Autowired
+	private CourseService courseService;
 	
 	@RequestMapping(value="/teacher_add")
 	public String getAddTeacherForm(ModelMap modelMap) {
@@ -32,7 +38,7 @@ public class TeacherController {
 	}
 	
 	@PostMapping(value="/addTeacher")
-	public String addCourse(@Valid Teacher teacher, BindingResult bindingResult) {
+	public String addTeacher(@Valid Teacher teacher, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
 			return "addTeacher";
@@ -50,7 +56,9 @@ public class TeacherController {
 	
 	@GetMapping(value = "/edit_teacher/{id}")
 	public String displayEditTeacherForm(@PathVariable("id") int id, ModelMap modelMap) {
+		
 		modelMap.addAttribute("teacher", teacherService.getTeacherById(id));
+		modelMap.addAttribute("courseList", teacherService.getTeachersAssignedCourses(id));
 		return "editTeacher";
 	}
 	
@@ -60,22 +68,28 @@ public class TeacherController {
 		return "redirect:teacher_list";
 	}
 	
-	@GetMapping(value="/delete_teacher")
-	public String deleteTeacher(@RequestParam("id") int id) {
+	@GetMapping(value="/delete_teacher/{id}")
+	public String deleteTeacher(@PathVariable("id") int id) {
 		teacherService.deleteTeacher(id);
-		return "redirect:teacher_list";
+		return "displayAllTeachers";
 	}
 	
 	@GetMapping(value="/teacher_details/{id}")
-	public String displayTeacherDetailsPage(@PathVariable("id") int id, ModelMap modelMap) {
-		modelMap.addAttribute("teacher", teacherService.getTeacherById(id));
+	public String displayTeacherDetailsPage(@PathVariable("id") int id, Model model) {
+		Set<Course> courseList = teacherService.getTeachersAssignedCourses(id);
+			if (courseList.isEmpty()) {
+				model.addAttribute("emptyCourseList", "No courses have been assigned. Please contact the Program Administrator.");
+			}
+		model.addAttribute("teacher", teacherService.getTeacherById(id));
+		model.addAttribute("courseList", courseList);
 		return "teacherDetails";
 		
 	}
 	
-	@GetMapping(value = "/teacher_details/edit_teacher/{id}")
-	public String displayEditTeacherFromTeacherDetails(@PathVariable("id") int id, ModelMap modelMap) {
-		modelMap.addAttribute("teacher", teacherService.getTeacherById(id));
-		return "teacherDetails";
-	}
+	/*
+	 * @GetMapping(value = "/teacher_details/edit_teacher/{id}") public String
+	 * displayEditTeacherFromTeacherDetails(@PathVariable("id") int id, ModelMap
+	 * modelMap) { modelMap.addAttribute("teacher",
+	 * teacherService.getTeacherById(id)); return "teacherDetails"; }
+	 */
 }

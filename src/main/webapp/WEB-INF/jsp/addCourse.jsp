@@ -50,7 +50,7 @@
                
                 <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                        <button class="btn btn-info" type="submit" name="addCourse" id="submit">Add Course</button>
+                        <button class="btn btn-primary" type="submit" name="addCourse" id="submit">Add Course</button>
                 </div>
                 </div>
                 </form:form>

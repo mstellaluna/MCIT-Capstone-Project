@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,22 +25,20 @@
             <th class="text-center">Last Name</th>
             <th class="text-center">Course ID</th>
             <th class="text-center">Course Name</th>
-            <th class="text-center">Marks 1</th>
-            <th class="text-center">Marks 2</th>
-            <th class="text-center">Grade</th>
+            <th class="text-center">Session</th>
+            <th class="text-center">Mark</th>
             <th class="text-center">Actions</th>
         </tr>
-        <c:forEach items="${completeList}" var="results">
+        <c:forEach items="${resultsList}" var="results">
             <tr>
            		<td class="pt-3-half">${results.id}</td>
-                <td class="pt-3-half">${results.student.id}</td>
+                <td class="pt-3-half">${results.student_id}</td>
                 <td class="pt-3-half">${results.student.firstName}</td>
                 <td class="pt-3-half">${results.student.lastName}</td>
-                <td class="pt-3-half">${results.course.id}</td>
+                <td class="pt-3-half">${results.course_id}</td>
                 <td class="pt-3-half">${results.course.courseName}</td>
-                <td class="pt-3-half">${results.mark1}</td>
-                <td class="pt-3-half">${results.mark2}</td>
-                <td class="pt-3-half">${results.grade}</td>
+                <td class="pt-3-half">${results.session}</td>
+                <td class="pt-3-half">${results.mark}</td>
                 <td>
                     <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/results?studentId=${results.student.id}&courseId=${results.course.id}&action=edit'/> ">Edit</a></span>
                     <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/results?studentId=${results.student.id}&courseId=${results.course.id}&action=delete'/> ">Delete</a></span>

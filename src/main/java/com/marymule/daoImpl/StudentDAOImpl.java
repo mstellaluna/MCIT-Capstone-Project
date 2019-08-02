@@ -1,6 +1,7 @@
 package com.marymule.daoImpl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.StudentDAO;
+import com.marymule.model.Course;
 import com.marymule.model.Student;
 
 @Repository
@@ -31,8 +33,9 @@ public Student updateStudent(Student student) {
 
 @Override
 public void deleteStudent(int id) {
-	Student entity = em.find(Student.class, id);
+	Student entity = em.find(Student.class, id); 
 	em.remove(entity);
+	
 }
 
 
@@ -48,6 +51,18 @@ public List<Student> getAllStudents() {
 	 return em.createQuery("SELECT s FROM Student s", Student.class).getResultList();
 
 }
+
+
+@Override
+public Set<Course> getStudentsRegisteredCourses(int id) {
+	Student entity = em.find(Student.class, id);
+	return entity.getCoursesRegistered();
+}
+
+
+
+
+
 
 
 	

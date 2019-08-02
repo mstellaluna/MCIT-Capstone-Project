@@ -1,6 +1,7 @@
-package com.marymule.controllers;
+	package com.marymule.controllers;
 
 import java.util.List;
+
 
 import javax.validation.Valid;
 
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.marymule.forms.AssignTeachertoCourseForm;
+import com.marymule.forms.AssignTeacherToCourseForm;
 import com.marymule.forms.RegisterStudentToCourseForm;
 import com.marymule.model.Course;
 import com.marymule.model.Student;
@@ -26,6 +27,7 @@ import com.marymule.service.StudentService;
 import com.marymule.service.TeacherService;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class CourseController.
  */
@@ -37,9 +39,11 @@ public class CourseController {
 	@Autowired
 	private CourseService courseService;
 	
+	/** The student service. */
 	@Autowired
 	private StudentService studentService;
 	
+	/** The teacher service. */
 	@Autowired
 	private TeacherService teacherService;
 	
@@ -59,8 +63,8 @@ public class CourseController {
 	/**
 	 * Adds the course.
 	 *
-	 * @param model the model
 	 * @param course the course
+	 * @param bindingResult the binding result
 	 * @return the string
 	 */
 	@PostMapping(value = "/addCourse")
@@ -129,44 +133,52 @@ public class CourseController {
 	/**
 	 * Display course details page.
 	 *
-	 * @param id the id
+	 * @param courseID the course ID
 	 * @param modelmap the modelmap
 	 * @return the string
 	 */
-	@GetMapping(value = "/course_details/{id}")
-	  public String displayCourseDetailsPage(@PathVariable("id") int id, ModelMap modelmap) { 
-		modelmap.addAttribute("student", courseService.getCourseById(id));
-		return "courseDetails";
-	
-	}
-	
-	/**
-	 * Display edit course from course details.
-	 *
-	 * @param id the id
-	 * @param modelmap the modelmap
-	 * @return the string
-	 */
-	@GetMapping(value = "/course_details/edit_course/{id}")
-	  public String displayEditCourseFromCourseDetails(@PathVariable("id") int id, ModelMap modelmap) { 
-		modelmap.addAttribute("course", courseService.getCourseById(id));
+	@GetMapping(value = "/course_details/{courseID}")
+	  public String displayCourseDetailsPage(@PathVariable("courseID") int courseID, ModelMap modelmap) { 
+		modelmap.addAttribute("studentList", courseService.getStudentsAssignedToCourse(courseID));
+		modelmap.addAttribute("course", courseService.getCourseById(courseID));
+		modelmap.addAttribute("teacherList", courseService.getTeachersAssignedToCourse(courseID));
 		return "courseDetails";
 	
 	}
 	
 	
-	  @GetMapping(value = "/course_add_student") 
+	  /**
+  	 * Display assign courseto student page.
+  	 *
+  	 * @param model the model
+  	 * @return the string
+  	 */
+  	@GetMapping(value = "/course_add_student") 
 	  public String displayAssignCoursetoStudentPage(Model model) {
-
 		  List<Student> studentList = studentService.getAllStudents();
 		  List<Course> courseList = courseService.getAllCourses();
+		  
+		  if(studentList.isEmpty()) {
+			  model.addAttribute("emptyStudentList", "There are no students in the system. Please contact Student Admissions");
+			  	if(courseList.isEmpty()) {
+			  		model.addAttribute("emptyCourseList", "There are no courses in the system. Please contact the Program Administrator.");
+			  	}
+		  }
 		  		
 		  model.addAttribute("studentList", studentList);
 		  model.addAttribute("courseList", courseList);
 		  return "addStudentToCourse";
 	  }
 	  	  
-	  @PostMapping(value = "/registerStudentToCourse")
+	  /**
+  	 * Register student to course.
+  	 *
+  	 * @param model the model
+  	 * @param form the form
+  	 * @param bindingResult the binding result
+  	 * @return the string
+  	 */
+  	@PostMapping(value = "/registerStudentToCourse")
 	  public String registerStudentToCourse(Model model, @ModelAttribute("registration") @Valid RegisterStudentToCourseForm form, BindingResult bindingResult) {
 
 		  if(bindingResult.hasErrors()) {
@@ -174,34 +186,96 @@ public class CourseController {
 			  return "addStudentToCourse";
 			  
 		  }
-		  courseService.registerStudent(form.getCourseId(), form.getStudentId());	
+		  courseService.registerStudent(form.getCourseId(), form.getStudentId());
+		  model.addAttribute("successMessage", "Student was added successfully");
 		  return "addStudentToCourse";
 	  }
 
 	  
-	  @GetMapping(value = "/course_add_teacher")
+	  /**
+  	 * Display assign teacher to course page string.
+  	 *
+  	 * @param model the model
+  	 * @return the string
+  	 */
+  	@GetMapping(value = "/course_add_teacher")
 	  public String displayAssignTeacherToCoursePageString(Model model) {
-		 
+
 		  List<Teacher> teacherList = teacherService.getAllTeachers();
 		  List<Course> courseList = courseService.getAllCourses();
-		  
+		  if(teacherList.isEmpty()) {
+			  model.addAttribute("emptyTeacherList", "There are currently no teachers in the system. Please contact the Program Administrator.");
+			  if (courseList.isEmpty()) {
+				  model.addAttribute("emptyCourseList", "There are currently no courses in the system. Please contact the Program Administrator.");
+			  }
+		  }
 		  model.addAttribute("teacherList", teacherList);
 		  model.addAttribute("courseList", courseList);
 		  return "addTeacherToCourse";
 		  	  
 	  }
 	  
-	  @PostMapping(value = "/assignTeachertoCourse")
-	  public String assignTeachertoCourse(Model model, @ModelAttribute("registration") @Valid AssignTeachertoCourseForm form, BindingResult bindingResult) {
+	  /**
+  	 * Assign teacherto course.
+  	 *
+  	 * @param model the model
+  	 * @param form the form
+  	 * @param bindingResult the binding result
+  	 * @return the string
+  	 */
+  	@PostMapping(value = "/assignTeachertoCourse")
+	  public String assignTeachertoCourse(Model model, @ModelAttribute("registration") @Valid AssignTeacherToCourseForm form, BindingResult bindingResult) {
 		  if (bindingResult.hasErrors()) {
 			 model.addAttribute("form", form);
 			 return "addTeacherToCourse";
 		  }
 		  
 		  courseService.registerTeacher(form.getCourseId(), form.getTeacherId());
-		  model.addAttribute("message", "Teacher was added successfully");
+		  model.addAttribute("successMessage", "Teacher was added successfully");
 		  return "addTeacherToCourse";
 	  }
 	
+	  /**
+  	 * Removes the student from course.
+  	 *
+  	 * @param courseID the course ID
+  	 * @param studentID the student ID
+  	 * @param model the model
+  	 * @return the string
+  	 */
+  	@GetMapping(value = "/course_remove_student/{courseID}/{studentID}")
+	  public String removeStudentFromCourse(@PathVariable("courseID") int courseID, @PathVariable("studentID") int studentID, Model model) {
+		  if(courseService.unregisterStudent(courseID, studentID)){
+			  model.addAttribute("successMessage", "Student was successfully removed from course.");
+		  } else {
+			  model.addAttribute("errorMessage", "Failed to remove student from course.");
+		  }
+		  courseService.unregisterStudent(courseID, studentID);
+		  return "displayAllStudents";
+	  }
+	  
+
+
+	/**
+	 * Removes the teacher from course.
+	 *
+	 * @param courseID the course ID
+	 * @param teacherID the teacher ID
+	 * @param model the model
+	 * @return the string
+	 */
+	@GetMapping(value = "/course_remove_teacher/{courseID}/{teacherID}")
+		public String removeTeacherFromCourse(@PathVariable("courseID") int courseID, @PathVariable("teacherID") int teacherID, Model model) {
+	  if(courseService.unregisterTeacher(courseID, teacherID)){
+		  model.addAttribute("successMessage", "Teacher was successfully removed from course.");
+	  } else {
+		  model.addAttribute("errorMessage", "Failed to remove teacher from course.");
+	  }
+	  
+	  courseService.unregisterTeacher(courseID, teacherID);
+	 return "displayAllCourses";
+
+}		
+
 
 }
