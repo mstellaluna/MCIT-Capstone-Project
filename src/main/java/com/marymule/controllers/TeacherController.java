@@ -85,11 +85,5 @@ public class TeacherController {
 		return "teacherDetails";
 		
 	}
-	
-	/*
-	 * @GetMapping(value = "/teacher_details/edit_teacher/{id}") public String
-	 * displayEditTeacherFromTeacherDetails(@PathVariable("id") int id, ModelMap
-	 * modelMap) { modelMap.addAttribute("teacher",
-	 * teacherService.getTeacherById(id)); return "teacherDetails"; }
-	 */
+
 }

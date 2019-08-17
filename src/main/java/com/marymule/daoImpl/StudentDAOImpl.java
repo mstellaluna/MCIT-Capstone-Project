@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.StudentDAO;
 import com.marymule.model.Course;
+import com.marymule.model.Payment;
 import com.marymule.model.Student;
 
 @Repository
@@ -58,6 +59,15 @@ public Set<Course> getStudentsRegisteredCourses(int id) {
 	Student entity = em.find(Student.class, id);
 	return entity.getCoursesRegistered();
 }
+
+
+@Override
+public List<Payment> getPaymentByStudentId(int id) {
+	Student entity = em.find(Student.class, id);
+	return entity.getPayments();
+}
+
+
 
 
 

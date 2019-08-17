@@ -31,9 +31,8 @@ public class ResultsDAOImpl implements ResultsDAO{
 	}
 
 	@Override
-	public Results updateResults(Results results) {
-		return em.merge(results);
-
+	public void updateResults(Results results) {
+		em.merge(results);
 		
 	}
 

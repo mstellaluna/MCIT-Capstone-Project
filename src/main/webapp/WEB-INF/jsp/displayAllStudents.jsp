@@ -37,7 +37,7 @@
               <td class="pt-3-half">${student.id}</td>
               <td class="pt-3-half">${student.firstName}</td>
               <td class="pt-3-half">${student.lastName}</td>
-              <td class="pt-3-half">${student.address}</td>
+              <td class="pt-3-half text-left ">${student.address}</td>
               <td class="pt-3-half">${student.city}</td>
               <td class="pt-3-half">${student.country}</td>
               <td class="pt-3-half">${student.phoneNumber}</td>

@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotEmpty;
 
 // TODO: Auto-generated Javadoc
@@ -69,10 +71,8 @@ public class Teacher {
 	@Column(name="salary")
 	private int salary;
 	
-	 @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
-	    @JoinTable(name = "teacher_assigned_course",
-	            joinColumns = { @JoinColumn(name="course_id") },
-	            inverseJoinColumns = { @JoinColumn(name = "teacher_id") })
+	  @LazyCollection(LazyCollectionOption.FALSE)
+	  @ManyToMany(mappedBy = "teachersRegistered")
 	    private Set<Course> coursesRegistered = new HashSet<>();
 	
 	

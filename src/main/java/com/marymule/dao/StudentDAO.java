@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.marymule.model.Course;
+import com.marymule.model.Payment;
 import com.marymule.model.Student;
 
 
@@ -15,6 +16,7 @@ public interface StudentDAO {
 	Student getStudentById(int id);
 	List<Student> getAllStudents();
 	Set<Course> getStudentsRegisteredCourses(int id);
+	List<Payment> getPaymentByStudentId(int id);
 	
 
 }

@@ -11,38 +11,43 @@
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
 <body>
+
 <div class="container bootstrap snippet studentForm">
     <h1>Teacher Details</h1>
      <c:if test="${!empty teacher}">
-    <div class="col-sm-9 panel panel-default panel-horizontal studentInfoPanel">
-    		<span class="editTeacher"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/teacher/edit_teacher/${teacher.id}'/> ">Edit</a></span>
-            <div class="panel-body teacherFullName"><p>${teacher.firstName} ${teacher.lastName }</p></div>
-            <div class="panel-body teacherStreetAddress"><p>${teacher.address}</p></div>
-            <div class="panel-body teacherCityCountry"><p>${teacher.city}, ${teacher.country}</p></div>
-            <div class="panel-body teacherSalary"><p>${teacher.salary}</p></div>
-
-          </div>
+     <div class="allCourseViewStudentDetails">
+     <h3>Teacher Information</h3>
+       <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
+                <tr>
+                  <th class="text-center">Teacher ID</th>
+                  <th class="text-center">First Name</th>
+                  <th class="text-center">Last Name</th>
+                  <th class="text-center">Address</th>
+                  <th class="text-center">Country</th>
+                  <th class="text-center">Phone Number</th>
+                  <th class="text-center">Salary</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+                <tr>
+                  <td class="pt-3-half">${teacher.id}</td>
+                  <td class="pt-3-half">${teacher.firstName}</td>
+                  <td class="pt-3-half">${teacher.lastName}</td>
+                  <td class="pt-3-half">${teacher.address}</td>
+                  <td class="pt-3-half">${teacher.country}</td>
+                  <td class="pt-3-half">${teacher.phoneNumber}</td>
+                  <td class="pt-3-half">${teacher.salary}</td>
+                  <td>
+                   <span class="text-center editLocation"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/teacher/edit_teacher/${teacher.id}'/> ">Edit</a></span>
+                  </td>
+                </tr> 
+              </table> 
+        </div>   
       </c:if>     
-    <div class="row">
-  		<div class="col-sm-3"><!--left col-->
-              
 
-      <div class="text-center">
-        <p class="studentID">Teacher ID: ${teacher.id}</p>
-      </div><br>
-
-               
-          <div class="panel panel-default contactPanel">
-            <div class="panel-heading">Contact</div>
-            <div class="panel-body">${teacher.phoneNumber}</div>
-          </div>
-
-        </div>
-       </div><!--/col-3-->
-       <div class="row">
-            <div class="col-sm-6"><!--left col-->
        <div class="allCourseViewStudentDetails">
             <h3 class="studentDetailsHeaders"> All Assigned Courses</h3>
+      
+            <p>${emptyCourseList}</p>
             <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
                   <th class="text-center">Course ID</th>
@@ -63,13 +68,10 @@
                 </tr> 
                 </c:forEach>  
               </table>
-            </div> 
+            </div>
+         </div>
+     
 
-                    </div>
-            
-    </div><!--/row-->
-   
-    </div>
   </body>  
   </html>
                                                       

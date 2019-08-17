@@ -1,15 +1,13 @@
-package com.marymule.dao;
+package com.marymule.service;
 
 import java.util.List;
-import java.util.Set;
 
 import com.marymule.model.Payment;
-import com.marymule.model.Student;
 
-public interface PaymentDAO {
+public interface PaymentService {
 	
 	void insertPayment(Payment payment); 
-	Payment updatePayment(Payment payment); 
+	void updatePayment(Payment payment); 
 	void deletePayment(int id); 
 	Payment getPaymentById(int id);
 	List<Payment> getAllPayments();

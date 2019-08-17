@@ -10,7 +10,7 @@ public interface ResultsDAO {
 	
 	void insertResult(Results results);
 	void deleteResults(int id);
-	Results updateResults(Results results);
+	void updateResults(Results results);
 	Results getResultsById(int id);
 	List<Results> getAllResults();
 

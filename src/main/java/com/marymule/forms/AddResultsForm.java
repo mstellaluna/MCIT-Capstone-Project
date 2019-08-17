@@ -4,14 +4,15 @@ import javax.persistence.Column;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.marymule.model.Course;
 import com.marymule.model.Results;
 import com.marymule.model.Student;
-import com.marymule.model.Teacher;
 
 public class AddResultsForm {
+	
+	@NotNull
+	private int resultsId;
 	
 	@NotNull 
 	private int studentId;
@@ -35,11 +36,15 @@ public class AddResultsForm {
 	
 	private Iterable<Results> results;
 	
-	private Course course;
-	private Student student;
+	
+	 private Course course;
+	 private Student student;
+	 private Results result;
+	 
 
 
 	public AddResultsForm() { }
+
 
 
 
@@ -93,9 +98,39 @@ public class AddResultsForm {
 	}
 
 
+	public int getResultsId() {
+		return resultsId;
+	}
+
+
+
+
+	public void setResultsId(int resultsId) {
+		this.resultsId = resultsId;
+	}
+
+
+
+
+	public Results getResult() {
+		return result;
+	}
+
+
+
+
+	public void setResult(Results result) {
+		this.result = result;
+	}
+
+
+
+
 	public Course getCourse() {
 		return course;
 	}
+
+
 
 
 	public void setCourse(Course course) {
@@ -103,9 +138,13 @@ public class AddResultsForm {
 	}
 
 
+
+
 	public Student getStudent() {
 		return student;
 	}
+
+
 
 
 	public void setStudent(Student student) {
@@ -113,11 +152,9 @@ public class AddResultsForm {
 	}
 
 
-	@Override
-	public String toString() {
-		return "AddResultsForm [studentId=" + studentId + ", courseId=" + courseId + ", session=" + session + ", mark="
-				+ mark + ", results=" + results + ", course=" + course + ", student=" + student + "]";
-	}
+
+	
+
 	
 	
 	

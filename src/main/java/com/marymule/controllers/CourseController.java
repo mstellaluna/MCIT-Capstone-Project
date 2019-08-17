@@ -2,7 +2,6 @@
 
 import java.util.List;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ import com.marymule.forms.RegisterStudentToCourseForm;
 import com.marymule.model.Course;
 import com.marymule.model.Student;
 import com.marymule.model.Teacher;
+import com.marymule.service.ClassScheduleService;
 import com.marymule.service.CourseService;
 import com.marymule.service.StudentService;
 import com.marymule.service.TeacherService;
@@ -46,6 +46,9 @@ public class CourseController {
 	/** The teacher service. */
 	@Autowired
 	private TeacherService teacherService;
+	
+	@Autowired
+	private ClassScheduleService classScheduleService;
 	
 
 	/**
@@ -101,7 +104,10 @@ public class CourseController {
 	 */
 	@GetMapping(value = "/edit_course/{id}")
 	  public String displayEditCourseForm(@PathVariable("id") int id, ModelMap modelmap) { 
+		modelmap.addAttribute("studentList", courseService.getStudentsAssignedToCourse(id));
 		modelmap.addAttribute("course", courseService.getCourseById(id));
+		modelmap.addAttribute("teacherList", courseService.getTeachersAssignedToCourse(id));
+		modelmap.addAttribute("resultsList", courseService.getCourseById(id).getResults());
 		return "editCourse";
 	
 	}
@@ -142,6 +148,8 @@ public class CourseController {
 		modelmap.addAttribute("studentList", courseService.getStudentsAssignedToCourse(courseID));
 		modelmap.addAttribute("course", courseService.getCourseById(courseID));
 		modelmap.addAttribute("teacherList", courseService.getTeachersAssignedToCourse(courseID));
+		modelmap.addAttribute("resultsList", courseService.getCourseById(courseID).getResults());
+	//	modelmap.addAttribute("classScheduleList", courseService.ge)
 		return "courseDetails";
 	
 	}
@@ -251,7 +259,8 @@ public class CourseController {
 			  model.addAttribute("errorMessage", "Failed to remove student from course.");
 		  }
 		  courseService.unregisterStudent(courseID, studentID);
-		  return "displayAllStudents";
+		  model.addAttribute("courseList", courseService.getAllCourses());
+		  return "displayAllCourses";
 	  }
 	  
 
@@ -273,7 +282,8 @@ public class CourseController {
 	  }
 	  
 	  courseService.unregisterTeacher(courseID, teacherID);
-	 return "displayAllCourses";
+	  model.addAttribute("teacherList", teacherService.getAllTeachers());
+	 return "displayAllTeachers";
 
 }		
 

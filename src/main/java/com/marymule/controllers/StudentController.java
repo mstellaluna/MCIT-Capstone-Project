@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.marymule.model.Course;
+import com.marymule.model.Payment;
+import com.marymule.model.Results;
 import com.marymule.model.Student;
 import com.marymule.service.StudentService;
 
@@ -33,7 +35,6 @@ public class StudentController {
     /** The student service. */
 	@Autowired
     private StudentService studentService;
-	
 
 
 
@@ -106,12 +107,16 @@ public class StudentController {
 	@GetMapping(value = "/edit_student/{id}")
 	  public String displayEditStudentForm(@PathVariable("id") int id, Model model) { 
 		Set<Course> courseList = studentService.getStudentsRegisteredCourses(id);
+		List<Results> resultsList = studentService.getStudentById(id).getResults();
+		List<Payment> paymentList = studentService.getPaymentByStudentId(id);
 		if(courseList.isEmpty()) {
 			model.addAttribute("emptyCourseList", "The student is not enrolled in any courses. Please see Student Admissions.");
 		}
 		
 		model.addAttribute("student", studentService.getStudentById(id));
 		model.addAttribute("courseList", courseList);
+		model.addAttribute("resultsList", resultsList);
+		model.addAttribute("paymentList", paymentList);
 		return "editStudent";
 	
 	}
@@ -156,11 +161,17 @@ public class StudentController {
 	  public String displayStudentDetailsPage(@PathVariable("id") int id, Model model) { 
 		
 		Set<Course> courseList = studentService.getStudentsRegisteredCourses(id);
+		List<Results> resultsList = studentService.getStudentById(id).getResults();
+		List<Payment> paymentList = studentService.getPaymentByStudentId(id);
+		
+
 		if(courseList.isEmpty()) {
 			model.addAttribute("emptyCourseList", " The student is not enrolled in any courses. Please see Student Admissions.");
 		}
 		model.addAttribute("student", studentService.getStudentById(id));
 		model.addAttribute("courseList", courseList);
+		model.addAttribute("resultsList", resultsList);
+		model.addAttribute("paymentList", paymentList);
 		return "studentDetails";
 	
 	}

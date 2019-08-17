@@ -10,6 +10,7 @@ import com.marymule.dao.CourseDAO;
 import com.marymule.dao.ResultsDAO;
 import com.marymule.dao.StudentDAO;
 import com.marymule.model.Course;
+import com.marymule.model.Payment;
 import com.marymule.model.Results;
 import com.marymule.model.Student;
 import com.marymule.service.CourseService;
@@ -60,7 +61,7 @@ public class StudentServiceImpl implements StudentService{
 		List<Results> resultsList = resultsDAO.getAllResults();
 		for (Results result : resultsList) 
 			if(result.getStudentResult().equals(student)) 
-				resultsService.deleteResults(result.getId(), result);
+				resultsService.deleteResults(result.getId());
 						
 		studentDAO.deleteStudent(id);
 			
@@ -82,6 +83,12 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public Set<Course> getStudentsRegisteredCourses(int id) {
 		return studentDAO.getStudentsRegisteredCourses(id);
+	}
+
+
+	@Override
+	public List<Payment> getPaymentByStudentId(int id) {
+		return studentDAO.getPaymentByStudentId(id);
 	}
 
 

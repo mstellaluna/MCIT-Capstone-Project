@@ -17,74 +17,71 @@
 
     <div class="container courseForm">
         <h1>Edit Course</h1>
-          <c:url var="editAction" value="/course/updateCourse?id=${course.id}" />
+          <c:url var="editAction" value="/locations/updateLocations?id=${locations.id}" />
          
-         <form:form action="${editAction}" commandName="course" method="POST">
+         <form:form action="${editAction}" ModelAttribute="locations" method="POST">
         	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
              <table>
         		<tr>
-					<td>
-						<form:label path="id" cssClass="col-xs-3 col-form-label mr-2" >
-							<spring:message text="Course ID:"/>
-						</form:label>
-					</td>
-					<td>
-						<form:input type="number" cssClass="form-control" path="id" value="${course.id}" disabled="true"/>
-					</td>
+				 	<td>
+                            <label for="id" class="col-xs-3 col-form-label mb-3">Location ID:</label>
+                        </td>
+                        <td>
+                            <input type='number' class="form-control" name='id' value="${id}" disabled>
+                        </td> 
+                   
 				</tr>
 				<tr>
 					<td>
-						<form:label path="courseName" cssClass="col-xs-3 col-form-label mr-2" >
-							<spring:message text="Course Name:"/>
-						</form:label>
-					</td>
-					<td>
-						<form:input type="text" cssClass="form-control" path="courseName" value="${course.courseName}" required="required"/>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form:label path="creditNumber" cssClass="col-xs-3 col-form-label mr-2">
-							<spring:message text="Credit Number:"/>
-						</form:label>	
-					</td>
-					<td>
-						<form:input type="text" cssClass="form-control" path="creditNumber" value="${course.creditNumber}"  required="required"/>
-					</td>
+                            <label for="locationName" class="col-xs-3 col-form-label mb-3">Location Name:</label>
+                        </td>
+                        <td>
+                            <input type='text' class="form-control" name='locationName' value="${locationName}">
+                        </td> 
 				</tr>
 				</table>
 				
              <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                    <button class="btn btn-primary" type="submit" name="updateCourse" id="submit">Update Course</button>
+                    <button class="btn btn-primary" type="submit" name="updateLocation" id="submit">Update Location</button>
                 </div>
                 </div>
         </form:form>
         
-        <div class="allCourseViewStudentDetails">
-       <h3>Assigned Teacher(s)</h3>
+    <div class="allCourseViewStudentDetails">
+       <h3>Scheduled Classes</h3>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
-                  <th class="text-center">ID</th>
-                  <th class="text-center">First Name</th>
-                  <th class="text-center">Last Name</th>
+                  <th class="text-center">Schedule ID</th>
+                  <th class="text-center">Location ID</th>
+                  <th class="text-center">Location Name</th>
+                  <th class="text-center">Course ID</th>
+                  <th class="text-center">Course Name</th>
+                  <th class="text-center">Start Time</th>
+                  <th class="text-center">End Time</th>
+                  <th class="text-center">Date</th>
                   <th class="text-center">Action</th>
                 </tr>
-                 <c:forEach items="${teacherList}" var="teacher">
+                 <c:forEach items="${scheduleList}" var="schedule">
                 <tr>
-                  <td class="pt-3-half">${teacher.id}</td>
-                 <td class="pt-3-half">${teacher.firstName}</td>
-                  <td class="pt-3-half">${teacher.lastName}</td> 
+                  <td class="pt-3-half">${schedule.id}</td>
+                 <td class="pt-3-half">${schedule.location.locationId}</td>
+                  <td class="pt-3-half">${schedule.location.locationName}</td>
+                  <td class="pt-3-half">${schedule.location.locationName}</td> 
+                  <td class="pt-3-half">${schedule.location.locationName}</td> 
+                  <td class="pt-3-half">${schedule.location.locationName}</td> 
+                  <td class="pt-3-half">${schedule.location.locationName}</td> 
+                  <td class="pt-3-half">${schedule.location.locationName}</td>  
                   <td>
-                  <span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/teacher/teacher_details/${teacher.id}'/> ">Details</a></span>
-                   <span class="text-center editCourse"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/teacher/edit_teacher/${teacher.id}'/> ">Edit</a></span>
-                    <span class="text-center editCourse"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0"  href="<c:url value='/course/course_remove_teacher/${course.id}/${teacher.id}'/> ">Delete</a></span>
+                  <span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/schedule/schedule_details/${schedule.id}'/> ">Details</a></span>
+                   <span class="text-center editCourse"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/schedule/edit_schedule_entry/${schedule.id}'/> ">Edit</a></span>
+                    <span class="text-center editCourse"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0"  href="<c:url value='/schedule/remove_schedule_entry/${course.id}/${teacher.id}'/> ">Delete</a></span>
                   </td>
                 </tr> 
                 </c:forEach>
               </table> 
         </div> 
-         <div class="allCourseViewStudentDetails">
+      <%--        <div class="allCourseViewStudentDetails">
        <h3>Enrolled Students</h3>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
@@ -133,7 +130,7 @@
                 </tr> 
                 </c:forEach>
               </table> 
-        </div>    
+        </div>  --%>   
     </div>
 </body>
 

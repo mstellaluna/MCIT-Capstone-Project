@@ -32,33 +32,33 @@ public class ResultsServiceImpl implements ResultsService{
 
 	@Override
 	public boolean insertResult(Results results) {
-		Student student = studentService.getStudentById(results.getStudentID());
-		if (!student.getCoursesRegistered().contains(courseService.getCourseById(results.getCourseID()))) {
+		Student student = studentService.getStudentById(results.getStudentId());
+		if (!student.getCoursesRegistered().contains(courseService.getCourseById(results.getCourseId()))) {
 			return false;
 		}
 		else {
-			results.setStudentResult(studentService.getStudentById(results.getStudentID()));
-			results.setCourseResult(courseService.getCourseById(results.getCourseID()));
+			results.setStudentResult(studentService.getStudentById(results.getStudentId()));
+			results.setCourseResult(courseService.getCourseById(results.getCourseId()));
 			resultsDAO.insertResult(results);
 			return true;
 		}
 	}
 
 	@Override
-	public void deleteResults(int id, Results results) {
+	public void deleteResults(int id) {
 		resultsDAO.deleteResults(id);
 		
 	}
 
 	@Override
 	public boolean updateResults(Results results) {
-		Student student = studentService.getStudentById(results.getStudentResult().getId());
-		if(!student.getCoursesRegistered().contains(courseService.getCourseById(results.getCourseResult().getId()))) {
+		Student student = studentService.getStudentById(results.getStudentId());
+		if(!student.getCoursesRegistered().contains(courseService.getCourseById(results.getCourseId()))) {
 			return false;
 		}
 		else {
-			results.setStudentResult(studentService.getStudentById(results.getStudentResult().getId()));
-			results.setCourseResult(courseService.getCourseById(results.getCourseResult().getId()));
+			results.setStudentResult(studentService.getStudentById(results.getStudentId()));
+			results.setCourseResult(courseService.getCourseById(results.getStudentId()));
 			resultsDAO.updateResults(results);
 			return true;
 		}	
@@ -66,8 +66,8 @@ public class ResultsServiceImpl implements ResultsService{
 	}
 
 	@Override
-	public Results getResultsById(int student_id) {
-		return resultsDAO.getResultsById(student_id);
+	public Results getResultsById(int id) {
+		return resultsDAO.getResultsById(id);
 	}
 
 	@Override

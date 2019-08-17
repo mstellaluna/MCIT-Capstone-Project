@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import com.marymule.dao.CourseDAO;
+import com.marymule.model.ClassSchedule;
 import com.marymule.model.Course;
 import com.marymule.model.Student;
 import com.marymule.model.Teacher;
@@ -62,6 +63,7 @@ public class CourseDAOImpl implements CourseDAO {
 		Course entity = em.find(Course.class, id);
 		return entity.getTeachersRegistered();
 	}
+
 
 
 	

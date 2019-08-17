@@ -1,7 +1,6 @@
 package com.marymule.daoImpl;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,32 +25,31 @@ public class PaymentDAOImpl implements PaymentDAO{
 
 	@Override
 	public Payment updatePayment(Payment payment) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(payment);
 	}
 
 	@Override
 	public void deletePayment(int id) {
-		// TODO Auto-generated method stub
+		Payment entity = em.find(Payment.class, id);
+		em.remove(entity);
 		
 	}
 
 	@Override
 	public Payment getPaymentById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Payment.class, id);
 	}
 
 	@Override
 	public List<Payment> getAllPayments() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT p FROM Payment p", Payment.class).getResultList();
 	}
 
 	@Override
-	public Set<Student> getAllStudentPayments(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Payment> getAllStudentPayments(int id) {
+		Student entity = em.find(Student.class, id);
+		return entity.getPayments();
+
 	}
 
 	

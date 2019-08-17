@@ -17,11 +17,20 @@
 
 
    <div class="container resultsForm">
-   <h1>Edit Results</h1>
-     <c:url var="editAction" value="/results/edit_results" />
             <h1>Edit Results</h1>
-            <form:form action="${editAction }" modelAttribute="results" method="post">
+             <c:url var="addAction" value="/results/updateResults?id=${id}" />
+            <form:form action="${addAction}" modelAttribute="results" method="post">
              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                   <table>
+                    <tr>   
+                  <td>
+                            <label for="id" class="col-xs-3 col-form-label mb-3">Result ID:</label>
+                        </td>
+                        <td>
+                            <input type='number' class="form-control" name='id' value="${id}" disabled>
+                        </td> 
+                    </tr>
+                    </table>
              
              <div class="form-group row"> 
       		<p>${emptyStudentList}</p>
@@ -42,31 +51,27 @@
 					</c:forEach>
 			</select>
            </div>      
-           <table>
-        		<tr>
-					<td>
-						<form:label path="session" cssClass="col-xs-3 col-form-label mr-2" >
-							<spring:message text="Session:"/>
-						</form:label>
-					</td>
-					<td>
-						<form:input type="number" cssClass="form-control" path="session" value="${results.session }" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<form:label path="mark" cssClass="col-xs-3 col-form-label mr-2" >
-							<spring:message text="Mark:"/>
-						</form:label>
-					</td>
-					<td>
-						<form:input type="text" cssClass="form-control" path="results.mark" value="${results.mark}" required="required"/>
-					</td>
-				</tr>      	
-               </table>
+            <table>
+                    <tr>
+                        <td>
+                            <label for="session" class="col-xs-3 col-form-label mb-3">Session:</label>
+                        </td>
+                        <td>
+                            <input type='number' class="form-control" name='session' required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="mark" class="col-xs-3 col-form-label mb-3">Mark:</label>
+                        </td>
+                        <td>
+                            <input type='number' class="form-control" name='mark' required>
+                        </td>
+                    </tr>
+                    </table>
                <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                        <button class="btn btn-info" type="submit" name="editResults" id="submit">Update Results</button>
+                        <button class="btn btn-info" type="submit" name="updateResults" id="submit">Update Results</button>
                 </div>
                 </div>        
                 </form:form>

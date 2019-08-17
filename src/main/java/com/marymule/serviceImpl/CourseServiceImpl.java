@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.marymule.dao.CourseDAO;
 import com.marymule.dao.StudentDAO;
 import com.marymule.dao.TeacherDAO;
+import com.marymule.model.ClassSchedule;
 import com.marymule.model.Course;
 import com.marymule.model.Student;
 import com.marymule.model.Teacher;
@@ -116,6 +117,9 @@ public class CourseServiceImpl implements CourseService{
 	public Set<Teacher> getTeachersAssignedToCourse(int id) {
 		return courseDAO.getTeachersAssignedToCourse(id);
 	}
+
+
+
 
 
 

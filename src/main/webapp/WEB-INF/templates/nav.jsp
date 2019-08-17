@@ -5,7 +5,10 @@
         <header class="logo">
             <img src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
         </header>
-        <ul>
+        
+
+
+     <ul>
       		<security:authorize access="hasRole('ROLE_USER')">
 			<li tabindex="0"><span><a href="<c:url value="/index" />">Home</a></span></li>
 			</security:authorize>		
@@ -24,15 +27,6 @@
 			<security:authorize access="hasRole('ROLE_USER')">
 			<li tabindex="0" class="icon-results"><span><a href="<c:url value="/logout" />">Logout</a></span></li>
 			</security:authorize>			
-        </ul>
+        </ul> 
         
-        
-
-        <div class="switch switch-blue">
-            <input type="radio" class="switch-input" name="english-french" value="en" id="en" checked>
-            <label for="en" class="switch-label switch-label-off">EN</label>
-            <input type="radio" class="switch-input" name="english-french" value="fr" id="fr">
-            <label for="fr" class="switch-label switch-label-on">FR</label>
-            <span class="switch-selection"></span>
-          </div>
     </nav>

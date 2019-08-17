@@ -16,29 +16,25 @@
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
 <div class="container allResultsView">
-    <h1>All Results</h1>
+    <h1>All Payments</h1>
     <table class="table table-bordered table-responsive-md table-striped text-center">
         <tr>
-        	<th class="text-center">Results ID</th>
+        	<th class="text-center">Payment ID</th>
             <th class="text-center">Student ID</th>
             <th class="text-center">First Name</th>
             <th class="text-center">Last Name</th>
-            <th class="text-center">Course ID</th>
-            <th class="text-center">Course Name</th>
-            <th class="text-center">Session</th>
-            <th class="text-center">Mark</th>
+            <th class="text-center">Amount</th>
+            <th class="text-center">Date</th>
             <th class="text-center">Actions</th>
         </tr>
-        <c:forEach items="${resultsList}" var="results">
+        <c:forEach items="${paymentList}" var="payment">
             <tr>
-           		<td class="pt-3-half">${results.id}</td>
-                <td class="pt-3-half">${results.studentResult.id}</td>
-                <td class="pt-3-half">${results.studentResult.firstName}</td>
-                <td class="pt-3-half">${results.studentResult.lastName}</td>
-                <td class="pt-3-half">${results.courseResult.id}</td>
-                <td class="pt-3-half">${results.courseResult.courseName}</td>
-                <td class="pt-3-half">${results.session}</td>
-                <td class="pt-3-half">${results.mark}</td>
+           		<td class="pt-3-half">${payment.id}</td>
+                <td class="pt-3-half">${payment.studentPayments.id}</td>
+                <td class="pt-3-half">${payment.studentPayments.firstName}</td>
+                <td class="pt-3-half">${payment.studentPayments.lastName}</td>
+                <td class="pt-3-half">${payment.amount}</td>
+                <td class="pt-3-half">${payment.paymentDate}</td>
                 <td>
                     <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/results/edit_results/${results.id}'/> ">Edit</a></span>
                     <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/results/delete_results/${results.id}'/> ">Delete</a></span>

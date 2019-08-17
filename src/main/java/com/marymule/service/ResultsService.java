@@ -7,9 +7,9 @@ import com.marymule.model.Results;
 public interface ResultsService {
 
 	boolean insertResult(Results results);
-	void deleteResults(int id, Results results);
+	void deleteResults(int id);
 	boolean updateResults(Results results);
-	Results getResultsById(int student_id);
+	Results getResultsById(int id);
 	List<Results> getAllResults();
 	
 }
