@@ -71,8 +71,12 @@ public class Locations {
 
 	@Override
 	public String toString() {
-		return "Locations [id=" + id + ", locationName=" + locationName + "]";
+		return "Locations [id=" + id + ", locationName=" + locationName + ", programSchedule=" + programSchedule
+				+ ", getId()=" + getId() + ", getLocationName()=" + getLocationName() + ", getProgramSchedule()="
+				+ getProgramSchedule() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
+
 	
 	
 	

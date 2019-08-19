@@ -47,6 +47,12 @@ public class LocationsDAOImpl implements LocationsDAO{
 		
 	}
 
+	@Override
+	public List<ClassSchedule> getScheduleByLocationId(int id) {
+		Locations entity = em.find(Locations.class, id);
+		return entity.getProgramSchedule();
+	}
+
 
 
 }

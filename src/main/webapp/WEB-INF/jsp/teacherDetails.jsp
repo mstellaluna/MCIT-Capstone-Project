@@ -12,10 +12,11 @@
 
 <body>
 
-<div class="container bootstrap snippet studentForm">
+<div class="container bootstrap snippet mainForm">
     <h1>Teacher Details</h1>
+      <p>${emptyTeacherList}</p>
      <c:if test="${!empty teacher}">
-     <div class="allCourseViewStudentDetails">
+     <div class="container bootstrap snippet mainForm">
      <h3>Teacher Information</h3>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
@@ -44,7 +45,7 @@
         </div>   
       </c:if>     
 
-       <div class="allCourseViewStudentDetails">
+       <div class="container bootstrap snippet mainForm">
             <h3 class="studentDetailsHeaders"> All Assigned Courses</h3>
       
             <p>${emptyCourseList}</p>

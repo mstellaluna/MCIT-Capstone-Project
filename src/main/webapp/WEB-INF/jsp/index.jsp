@@ -17,7 +17,7 @@
 
 	<div class="container mainForm">
 		<h1>Montreal College of Information Technology</h1>
-		<p id="mainPara">
+		<p class="mainPara">
 			Welcome to the MCIT Student Management System<span>
 			<security:authentication property="name" /></span>
 		</p>
@@ -25,7 +25,7 @@
 
 
 	</div>
-
+<%@include file="/WEB-INF/templates/footer.jsp"%>
 </body>
 
 </html>

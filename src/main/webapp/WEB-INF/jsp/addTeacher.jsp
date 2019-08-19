@@ -12,7 +12,7 @@
 <body>
 	<%@include file="/WEB-INF/templates/nav.jsp"%>
 
-	<div class="container teacherForm">
+	<div class="container mainForm">
 		<h1>Add Teacher</h1>
 		     <c:url var="addAction" value="addTeacher" />
 
@@ -96,13 +96,12 @@
 						<form:errors path="salary" cssClass="errorMessage" />
 					</td>
 				</tr>  
-				
-				<tr>
-					<td style="text-align: center;" colspan="2">
-						<button class="btn btn-primary" type="submit" name="submitStudentForm" id="submit">Add Teacher</button>						
-	
-					</td>
-				</tr>
+ <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>
 			</table>
 		</form:form>
 	</div>

@@ -15,7 +15,7 @@
 
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
-<div class="container studentForm">
+<div class="container mainForm">
 
  <h1>Teacher Assignment</h1>
           <c:url var="addAction" value="assignTeachertoCourse" />
@@ -44,7 +44,7 @@
            </div>     
            <div class="form-group row">
                 <div class="offset-xs-3 col-xs-9">
-                    <button class="btn btn-primary" type="submit" name="addTeacher" id="submit">Assign Teacher</button>
+                    <button class="btn btn-info" type="submit" name="addTeacher" id="submit">Assign Teacher</button>
                 </div>
             </div>
             </form:form>

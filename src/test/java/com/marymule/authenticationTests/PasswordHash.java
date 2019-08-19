@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 public class PasswordHash extends TestCase {
 	
 	public void testBCryptHash() {
-		String password = "fortnite";
+		String password = "kittykat";
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(password);
 		System.out.println(hashedPassword);

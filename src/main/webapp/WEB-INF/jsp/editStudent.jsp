@@ -12,7 +12,7 @@
 <body>
 
           
- <div class="container bootstrap snippet studentForm">
+ <div class="container bootstrap snippet mainForm">
         <h1>Edit Student</h1>
           <c:url var="editAction" value="/student/updateStudent?id=${student.id}" />
         <form:form action="${editAction}" commandName="student" method="POST">
@@ -107,16 +107,17 @@
 					<td>
 						<form:input type="emailAddress" cssClass="form-control" path="emailAddress" value="${student.emailAddress}" required="required"/>
 					</td>
-				</tr>   		
+				</tr> 
+				 <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>  		
             </table>
-             <div class="form-group row">
-                <div class="offset-xs-3 col-xs-9">
-                    <button class="btn btn-primary" type="submit" name="updateStudent" id="submit">Update Student</button>
-                </div>
-                </div>
           </form:form>    
       
-       <div class="allCourseViewStudentDetails">
+       <div class="container studentForm">
             <h3>Registered Courses</h3>
       
             <p>${emptyCourseList}</p>
@@ -146,6 +147,7 @@
        
         <div class="container studentForm">
                       <h3 class="studentDetailsHeaders"> All Results</h3>
+                       <p>${emptyResultsList}</p>
                       <table class=" resultsViewStudent table table-bordered table-responsive-md table-striped text-center">
                           <tr>
                           <th class="text-center">Course ID</th>
@@ -169,7 +171,7 @@
                         </table>
                       </div>        
 
-            <div class="allCourseViewStudentDetails">
+            <div class="container studentForm">
             <h3 class="studentDetailsHeaders"> Registered Courses</h3>
       
             <p>${emptyCourseList}</p>
@@ -194,8 +196,9 @@
                 </c:forEach>  
               </table>
             </div>
-            <div class="allPaymentViewStudentDetails">
+            <div class="container studentForm">
                     <h3>All Payments</h3>
+                     <p>${emptyPaymentList}</p>
                     <table class=" paymentViewStudent table table-bordered table-responsive-md table-striped text-center">
                         <tr>
                           <th class="text-center">Payment ID</th>
@@ -218,7 +221,7 @@
                     </div> 
                     </div> 
        
- 	   </div>  	 
+ 	  
 </body>
 
 </html>

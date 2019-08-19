@@ -11,10 +11,11 @@
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
 <body>
-<div class="container bootstrap snippet studentForm">
+<div class="container bootstrap snippet mainForm">
     <h1>Student Details</h1>
      <c:if test="${!empty student}">
-     <div class="allCourseViewStudentDetails">
+     <div class="mainForm">
+     <p>${emptyStudentList}</p>
      <h3>Student Information</h3>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
@@ -45,7 +46,7 @@
         </div>   
       </c:if>     
 
-       <div class="allCourseViewStudentDetails">
+       <div class="container bootstrap snippet mainForm">
             <h3 class="studentDetailsHeaders"> Registered Courses</h3>
       
             <p>${emptyCourseList}</p>
@@ -70,8 +71,9 @@
                 </c:forEach>  
               </table>
             </div>
-             <div class="allResultsViewStudentDetails">
+             <div class="container bootstrap snippet mainForm">
                       <h3 class="studentDetailsHeaders"> All Results</h3>
+                      <p>${emptyResultsList}</p>
                       <table class=" resultsViewStudent table table-bordered table-responsive-md table-striped text-center">
                           <tr>
                           <th class="text-center">Course ID</th>
@@ -94,8 +96,9 @@
                           </c:forEach>  
                         </table>
                       </div>        
-            <div class="allPaymentViewStudentDetails">
+            <div class="container bootstrap snippet mainForm">
                     <h3>All Payments</h3>
+                    <p>${emptyPaymentList}</p>
                     <table class=" paymentViewStudent table table-bordered table-responsive-md table-striped text-center">
                         <tr>
                           <th class="text-center">Payment ID</th>

@@ -18,20 +18,10 @@
 			<img
 				src="${pageContext.request.contextPath}/resources/theme/images/logo.jpg">
 		</header>
-
-		  <!--  
-		 <div class="switch switch-blue">
-         <input type="radio" class="switch-input" name="english-french" value="en" id="en" checked>
-            <label for="en" class="switch-label switch-label-off">EN</label>
-            <input type="radio" class="switch-input" name="english-french" value="fr" id="fr">
-            <label for="fr" class="switch-label switch-label-on">FR</label>
-            <span class="switch-selection"></span>
-          </div>
-          --> 
 	</nav>
 
 
- <div class="container loginForm">
+ <div class="container mainForm">
 
 
         <h1>Login</h1>

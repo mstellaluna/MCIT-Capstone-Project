@@ -17,6 +17,7 @@ public interface CourseService {
 	List<Course> getAllCourses();
 	Set<Teacher> getTeachersAssignedToCourse(int id);
 	Set<Student> getStudentsAssignedToCourse(int id);
+	List<ClassSchedule> getScheduleByCourseId(int id);
 
 	
     public boolean registerStudent(int courseID, int studentID);

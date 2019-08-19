@@ -12,7 +12,7 @@
 <body>
 	<%@include file="/WEB-INF/templates/nav.jsp"%>
 
-	<div class="container teacherForm">
+	<div class="container bootstrap snippet mainForm">
 		<h1>Edit Teacher</h1>
 		     <c:url var="addAction" value="/teacher/updateTeacher?id=${teacher.id}" />
 
@@ -107,14 +107,15 @@
 					</td>
 				</tr>  
 				
-				<tr>
-					<td style="text-align: center;" colspan="2">
-						<button class="btn btn-primary" type="submit" name="updateTeacherForm" id="submit">Edit Teacher</button>								
-					</td>
-				</tr>
+				 <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>
 			</table>
 		</form:form>
-		<div class="allCourseViewStudentDetails">
+		<div class="container bootstrap snippet mainForm">
             <h3 class="studentDetailsHeaders"> All Assigned Courses</h3>
       
             <p>${emptyCourseList}</p>
@@ -140,7 +141,7 @@
               </table>
             </div>
          </div>
-	</div>
+
 </body>
 
 </html>

@@ -12,6 +12,7 @@ public interface ClassScheduleService {
 	void deleteSchedule(int id); 
 	ClassSchedule getScheduleById(int id);
 	List<ClassSchedule> getAllSchedule();
+	
 
 
 	

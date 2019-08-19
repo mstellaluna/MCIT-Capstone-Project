@@ -16,7 +16,7 @@
 
 
 
-   <div class="container resultsForm">
+   <div class="container mainForm">
             <h1>Edit Results</h1>
              <c:url var="addAction" value="/results/updateResults?id=${id}" />
             <form:form action="${addAction}" modelAttribute="results" method="post">
@@ -68,12 +68,13 @@
                             <input type='number' class="form-control" name='mark' required>
                         </td>
                     </tr>
-                    </table>
-               <div class="form-group row">
-                <div class="offset-xs-3 col-xs-9">
-                        <button class="btn btn-info" type="submit" name="updateResults" id="submit">Update Results</button>
-                </div>
-                </div>        
+                     <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>
+                    </table>      
                 </form:form>
     </div>
   

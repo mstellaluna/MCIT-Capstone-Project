@@ -15,8 +15,12 @@
 
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
-<div class="container allResultsView">
+<div class="container mainForm">
     <h1>All Payments</h1>
+    <c:if test="${empty paymentList}">
+       		<p>${emptyPaymentList}</p>
+ 		</c:if>
+ 	<c:if test="${!empty paymentList}">	
     <table class="table table-bordered table-responsive-md table-striped text-center">
         <tr>
         	<th class="text-center">Payment ID</th>
@@ -36,12 +40,13 @@
                 <td class="pt-3-half">${payment.amount}</td>
                 <td class="pt-3-half">${payment.paymentDate}</td>
                 <td>
-                    <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/results/edit_results/${results.id}'/> ">Edit</a></span>
-                    <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/results/delete_results/${results.id}'/> ">Delete</a></span>
+                    <span class="table-edit"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/payment/edit_payment/${payment.id}'/> ">Edit</a></span>
+                    <span class="table-remove"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0" href="<c:url value='/payment/delete_payment?id=${payment.id}'/> ">Delete</a></span>
                 </td> 
             </tr>
         </c:forEach>
     </table>
+    </c:if>
 </div>
 
 

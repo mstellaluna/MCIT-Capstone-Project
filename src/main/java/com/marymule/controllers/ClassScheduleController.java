@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marymule.forms.AddScheduleForm;
 import com.marymule.model.ClassSchedule;
+import com.marymule.model.Course;
+import com.marymule.model.Locations;
 import com.marymule.service.ClassScheduleService;
 import com.marymule.service.CourseService;
 import com.marymule.service.LocationsService;
@@ -37,16 +39,24 @@ public class ClassScheduleController {
 	
 	@GetMapping(value="/schedule_add")
 	public String getAddSchedulePage(Model model) {
+		List<Locations> locationList = locationService.getAllLocations();
+		List<Course> courseList = courseService.getAllCourses();
+			if(locationList.isEmpty()) {
+				model.addAttribute("emptyLocationList", "There are no locations in the system. Please contact Program Administrator.");
+				if(courseList.isEmpty()) {
+					model.addAttribute("emptyCourseList", "There are no courses in the system. Please contact Program Administrator");
+				}
+			}
 		model.addAttribute("schedule", new ClassSchedule());
-		model.addAttribute("locationList", locationService.getAllLocations());
-		model.addAttribute("courseList", courseService.getAllCourses());
+		model.addAttribute("locationList", locationList);
+		model.addAttribute("courseList", courseList);
 		return "addSchedule";
 	}
 	
 	  @PostMapping(value = "/addSchedule") 
 	  public String saveClassSchedule(@ModelAttribute("classSchedule") 
 	  								  @DateTimeFormat(pattern="HH:mm") 
-	  								  @Valid AddScheduleForm form, BindingResult bindingResult) {
+	  								  @Valid AddScheduleForm form, Model model, BindingResult bindingResult) {
 	  
 	  ClassSchedule classSchedule = new ClassSchedule();
 	  classSchedule.setLocationID(form.getLocationId());
@@ -55,7 +65,7 @@ public class ClassScheduleController {
 	  classSchedule.setEndTime(form.getEndTime());
 	  classSchedule.setClassDate(form.getClassDate());
 	  classScheduleService.insertSchedule(classSchedule);
-	  	System.out.println(classSchedule);
+	  model.addAttribute("scheduleList", classScheduleService.getAllSchedule());
 	  return "displayAllClassSchedules";
 	  
 	 }
@@ -63,14 +73,21 @@ public class ClassScheduleController {
 	  @GetMapping(value = "/schedule_list")
 	  public String displayAllClassSchedules(Model model) {
 	  List<ClassSchedule> scheduleList = classScheduleService.getAllSchedule();
+	  if(scheduleList.isEmpty()) {
+		  model.addAttribute("emptySchedule", "There is no schedule available. Please contact Program Administrator");
+	  }
 	  	model.addAttribute("scheduleList", scheduleList);
 	  	return "displayAllClassSchedules";
 	  }
 	  
 	  @GetMapping(value = "/edit_schedule/{id}")
 	  public String getEditScheduleForm(@PathVariable("id") int id, Model model) {
+		  List<Course> courseList = courseService.getAllCourses();
+		  if(courseList.isEmpty()){
+			  model.addAttribute("emptyCourseList", "There are no courses in the system. Please contact Program Administrator");
+		  }
 			model.addAttribute("locationList", locationService.getAllLocations());
-			model.addAttribute("courseList", courseService.getAllCourses());
+			model.addAttribute("courseList", courseList);
 		  return "editSchedule";
 	 }
 	  
@@ -80,7 +97,6 @@ public class ClassScheduleController {
 	  								   @DateTimeFormat(pattern="HH:mm") 
 	  								   @Valid ClassSchedule classSchedule, 
 	  								   Model model, BindingResult bindingResult) {
-		  System.out.println(classSchedule);
 		  classScheduleService.updateSchedule(classSchedule);
 			model.addAttribute("scheduleList", classScheduleService.getAllSchedule());
 			return "displayAllClassSchedules";
@@ -89,6 +105,7 @@ public class ClassScheduleController {
 	  @GetMapping(value = "/delete_schedule")
 	  public String deleteScheduleEntry(@RequestParam("id") int id, Model model) {
 	  classScheduleService.deleteSchedule(id);
+	  model.addAttribute("scheduleList", classScheduleService.getAllSchedule());
 	  return "displayAllClassSchedules";
 	  }
 

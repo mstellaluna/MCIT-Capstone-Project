@@ -1,5 +1,6 @@
 package com.marymule.controllers;
 
+import java.awt.geom.Area;
 import java.util.List;
 import java.util.Set;
 
@@ -66,7 +67,7 @@ public class StudentController {
 	 */
 	
 	@PostMapping(value = "/addStudent")
-	public String addStudent(@Valid Student student, BindingResult bindingResult) {
+	public String addStudent(@Valid Student student, Model model, BindingResult bindingResult) {
 			
 			if(bindingResult.hasErrors()) {
 				return "addStudent";
@@ -75,7 +76,8 @@ public class StudentController {
 			else {
 		
 				studentService.insertStudent(student);
-				return "redirect:student_list";
+				model.addAttribute("studentList", studentService.getAllStudents());
+				return "displayAllStudents";
 			}	
 	}
 
@@ -110,7 +112,13 @@ public class StudentController {
 		List<Results> resultsList = studentService.getStudentById(id).getResults();
 		List<Payment> paymentList = studentService.getPaymentByStudentId(id);
 		if(courseList.isEmpty()) {
-			model.addAttribute("emptyCourseList", "The student is not enrolled in any courses. Please see Student Admissions.");
+			model.addAttribute("emptyCourseList", "The student is not enrolled in any courses. Please contact Student Admissions.");
+			if(resultsList.isEmpty()) {
+				model.addAttribute("emptyResultsList", "There are no results for the student. Please contact assigned teacher.");
+				if(paymentList.isEmpty()) {
+					model.addAttribute("emptyPaymentList", "There are no payments for the student. Please contact Program Administrator.");
+				}
+			}
 		}
 		
 		model.addAttribute("student", studentService.getStudentById(id));
@@ -131,9 +139,14 @@ public class StudentController {
 	*/
 	
 	@PostMapping(value = "/updateStudent")
-	public String savedEditedStudent(@ModelAttribute("student") Student student) {
+	public String savedEditedStudent(@ModelAttribute("student") Student student, Model model) {
+		List<Student> studentList = studentService.getAllStudents();
+		if(studentList.isEmpty()) {
+			model.addAttribute("emptyStudentList", "There are no students in the system. Please contact Student Admissions");
+		}
 			studentService.updateStudent(student);
-			return "redirect:student_list";
+			model.addAttribute("studentList", studentList);
+			return "displayAllStudents";
 	}
 	
 	/**
@@ -144,9 +157,14 @@ public class StudentController {
 	 */
 	
 	@GetMapping(value = "/delete_student/{id}")
-	public String deleteStudent(@PathVariable("id") int id) {
+	public String deleteStudent(@PathVariable("id") int id, Model model) {
+		List<Student> studentList = studentService.getAllStudents();
+			if(studentList.isEmpty()) {
+				model.addAttribute("emptyStudentList", "There are no students in the system. Please contact Student Admissions");
+			}
 			studentService.deleteStudent(id);
-			return "student_list";
+			model.addAttribute("studentList", studentService.getAllStudents());
+			return "displayAllStudents";
 	}
 	
 	/**
@@ -159,15 +177,19 @@ public class StudentController {
 	
 	@GetMapping(value = "/student_details/{id}")
 	  public String displayStudentDetailsPage(@PathVariable("id") int id, Model model) { 
-		
 		Set<Course> courseList = studentService.getStudentsRegisteredCourses(id);
 		List<Results> resultsList = studentService.getStudentById(id).getResults();
 		List<Payment> paymentList = studentService.getPaymentByStudentId(id);
-		
-
 		if(courseList.isEmpty()) {
-			model.addAttribute("emptyCourseList", " The student is not enrolled in any courses. Please see Student Admissions.");
+			model.addAttribute("emptyCourseList", "The student is not enrolled in any courses. Please contact Student Admissions.");
+			if(resultsList.isEmpty()) {
+				model.addAttribute("emptyResultsList", "There are no results for the student. Please contact assigned teacher.");
+				if(paymentList.isEmpty()) {
+					model.addAttribute("emptyPaymentList", "There are no payments for the student. Please contact Program Administrator.");
+				}
+			}
 		}
+		
 		model.addAttribute("student", studentService.getStudentById(id));
 		model.addAttribute("courseList", courseList);
 		model.addAttribute("resultsList", resultsList);

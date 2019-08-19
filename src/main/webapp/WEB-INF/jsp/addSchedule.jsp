@@ -16,7 +16,7 @@
 
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
-<div class="container studentForm">
+<div class="container mainForm">
 		  <h1>Add Schedule</h1>
           <c:url var="addAction" value="addSchedule" />         
             <form:form action="${addAction}" modelAttribute="addScheduleForm" method="POST">  
@@ -73,14 +73,13 @@
                             
                         </td>
                     </tr>
+                     <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>
                     </table>
-  
-              	                 	
-            <div class="form-group row">
-                <div class="offset-xs-3 col-xs-9">
-                    <button class="btn btn-primary" type="submit" name="addSchedule" id="submit">Schedule</button>
-                </div>
-                </div>
           </form:form>            
 
 

@@ -1,5 +1,6 @@
 package com.marymule.controllers;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -27,9 +28,7 @@ public class TeacherController {
 
 	@Autowired
 	private TeacherService teacherService;
-	
-	@Autowired
-	private CourseService courseService;
+
 	
 	@RequestMapping(value="/teacher_add")
 	public String getAddTeacherForm(ModelMap modelMap) {
@@ -50,15 +49,23 @@ public class TeacherController {
 	
 	@GetMapping(value="/teacher_list")
 	public String displayAllTeachers(Model model) {
-		model.addAttribute("teacherList", teacherService.getAllTeachers());
+		List<Teacher> teacherList = teacherService.getAllTeachers();
+		if(teacherList.isEmpty()) {
+			model.addAttribute("emptyTeacherList", "There are no teachers in the system. Please contact Program Administrator");
+		}
+		model.addAttribute("teacherList", teacherList);
 		return "displayAllTeachers";
 	}
 	
 	@GetMapping(value = "/edit_teacher/{id}")
-	public String displayEditTeacherForm(@PathVariable("id") int id, ModelMap modelMap) {
-		
-		modelMap.addAttribute("teacher", teacherService.getTeacherById(id));
-		modelMap.addAttribute("courseList", teacherService.getTeachersAssignedCourses(id));
+	public String displayEditTeacherForm(@PathVariable("id") int id, Model model) {
+		Set<Course> courseList = teacherService.getTeachersAssignedCourses(id);
+			if(courseList.isEmpty()) {
+				model.addAttribute("emptyCourseList", "No courses have been assigned. Please contact Program Administrator");
+			}
+			
+		model.addAttribute("teacher", teacherService.getTeacherById(id));
+		model.addAttribute("courseList", courseList);
 		return "editTeacher";
 	}
 	
@@ -69,8 +76,9 @@ public class TeacherController {
 	}
 	
 	@GetMapping(value="/delete_teacher/{id}")
-	public String deleteTeacher(@PathVariable("id") int id) {
+	public String deleteTeacher(@PathVariable("id") int id, Model model) {
 		teacherService.deleteTeacher(id);
+		model.addAttribute("teacherList", teacherService.getAllTeachers());
 		return "displayAllTeachers";
 	}
 	

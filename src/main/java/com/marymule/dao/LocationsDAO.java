@@ -15,6 +15,7 @@ public interface LocationsDAO {
 	void deleteLocation(int id); 
 	Locations getLocationById(int id);
 	List<Locations> getAllLocations();
+	List<ClassSchedule> getScheduleByLocationId(int id);
 
 
 

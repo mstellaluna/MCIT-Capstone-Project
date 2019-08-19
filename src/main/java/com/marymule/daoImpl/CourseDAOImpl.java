@@ -64,6 +64,12 @@ public class CourseDAOImpl implements CourseDAO {
 		return entity.getTeachersRegistered();
 	}
 
+	@Override
+	public List<ClassSchedule> getScheduleByCourseId(int id) {
+		Course entity = em.find(Course.class, id);
+		return entity.getProgramSchedule();
+	}
+
 
 
 	

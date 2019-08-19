@@ -19,6 +19,7 @@ public interface CourseDAO {
 	List<Course> getAllCourses();
 	Set<Teacher> getTeachersAssignedToCourse(int id);
 	Set<Student> getStudentsAssignedToCourse(int id);
+	List<ClassSchedule> getScheduleByCourseId(int id);
 
 	
 	

@@ -15,8 +15,11 @@
 
 
 
-    <div class="container allCourseView">
+    <div class="container mainForm">
         <h1>All Courses</h1>
+         <c:if test="${empty courseList}">
+       		<p>${emptyCourseList}</p>
+ 		</c:if>
          <c:if test="${!empty courseList}">
         <table class="table table-bordered table-responsive-md table-striped text-center">
             <tr>

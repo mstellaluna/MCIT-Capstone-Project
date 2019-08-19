@@ -14,13 +14,13 @@
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
 
-    <div class="container allStudentView">
+    <div class="container bootstrap snippet mainForm">
         <h1>All Students</h1>
         <c:if test="${empty studentList}">
        		<p>${emptyStudentList}</p>
  		</c:if>
  		<c:if test="${!empty studentList}">
-        <table class="table table-bordered table-responsive-md table-striped text-center">
+        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
             <tr>
               <th class="text-center">Student ID</th>
               <th class="text-center">First Name</th>

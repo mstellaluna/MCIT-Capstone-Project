@@ -76,6 +76,9 @@ public class ResultsController {
 	@GetMapping(value = "/results_list")
 	public String displayAllResults(Model model) {
 		List<Results> resultsList = resultsService.getAllResults();
+		if(resultsList.isEmpty()) {
+			model.addAttribute("emptyResultsList", "There are no results in the system. Please contact Program Administrator");
+		}
 		model.addAttribute("resultsList", resultsList);
 		return "displayAllResults";
 		

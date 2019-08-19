@@ -35,8 +35,12 @@ public class PaymentController {
 	
 	@GetMapping(value="/payment_add")
 	public String getAddPaymentPage(Model model) {
+		List<Student> studentList = studentService.getAllStudents();
+			if(studentList.isEmpty()) {
+				model.addAttribute("emptyStudentList", "There are no students in the system. Please contact Student Admissions");
+			}
 		model.addAttribute("payment", new Payment());
-		model.addAttribute("studentList", studentService.getAllStudents());
+		model.addAttribute("studentList", studentList);
 		return "addPayment";
 	}
 		
@@ -55,14 +59,20 @@ public class PaymentController {
 	  @GetMapping(value = "/payment_list")
 	  public String displayAllPayments(Model model) {
 		  List<Payment> paymentList = paymentService.getAllPayments();
-		   System.out.println(paymentList);
+		  	if(paymentList.isEmpty()) {
+		  		model.addAttribute("emptyPaymentList", "There are no payments in the system. Please contact Student Admissions");
+		  	}
 	        model.addAttribute("paymentList", paymentList);    
 	        return "displayAllPayments";
 	  }
 	  
 	  @GetMapping(value = "/edit_payment/{id}")
 	  public String getEditPaymentForm(@PathVariable("id") int id, Model model) {
-		  model.addAttribute("studentList", studentService.getAllStudents());
+		  List<Student> studentList = studentService.getAllStudents();
+		   if(studentList.isEmpty()) {
+			   model.addAttribute("emptyStudentList", "There are no students in the system. Please contact Student Admissions");
+		   }
+		  model.addAttribute("studentList", studentList);
 		  return "editPayments";
 	 }
 	  

@@ -45,6 +45,11 @@ public class LocationsServiceImpl implements LocationsService {
 		return locationsDAO.getAllLocations();
 	}
 
+	@Override
+	public List<ClassSchedule> getScheduleByLocationId(int id) {
+		return locationsDAO.getScheduleByLocationId(id);
+	}
+
 
 	
 

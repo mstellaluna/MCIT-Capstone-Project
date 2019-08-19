@@ -15,8 +15,12 @@
 
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
-<div class="container allResultsView">
+<div class="container mainForm">
     <h1>All Results</h1>
+     <c:if test="${empty resultsList}">
+       		<p>${emptyResultsList}</p>
+ 		</c:if>
+ 	<c:if test="${!empty resultsList}">	
     <table class="table table-bordered table-responsive-md table-striped text-center">
         <tr>
         	<th class="text-center">Results ID</th>
@@ -46,6 +50,7 @@
             </tr>
         </c:forEach>
     </table>
+    </c:if>
 </div>
 
 

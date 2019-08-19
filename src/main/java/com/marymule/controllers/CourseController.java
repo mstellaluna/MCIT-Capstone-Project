@@ -1,6 +1,8 @@
 	package com.marymule.controllers;
 
+import java.awt.geom.Area;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -18,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.marymule.forms.AssignTeacherToCourseForm;
 import com.marymule.forms.RegisterStudentToCourseForm;
+import com.marymule.model.ClassSchedule;
 import com.marymule.model.Course;
+import com.marymule.model.Results;
 import com.marymule.model.Student;
 import com.marymule.model.Teacher;
-import com.marymule.service.ClassScheduleService;
 import com.marymule.service.CourseService;
 import com.marymule.service.StudentService;
 import com.marymule.service.TeacherService;
@@ -47,8 +50,7 @@ public class CourseController {
 	@Autowired
 	private TeacherService teacherService;
 	
-	@Autowired
-	private ClassScheduleService classScheduleService;
+
 	
 
 	/**
@@ -90,6 +92,10 @@ public class CourseController {
 	 */
 	@GetMapping(value = "/course_list")
 	public String displayAllCourses(Model model) {
+		List<Course> courseList = courseService.getAllCourses();
+		if (courseList.isEmpty()) {
+			model.addAttribute("emptyCourseList", "There are no courses available in the system. Please contact Program Administrator");
+		}
 		
 		model.addAttribute("courseList", courseService.getAllCourses());
 		 return "displayAllCourses";
@@ -103,11 +109,29 @@ public class CourseController {
 	 * @return the string
 	 */
 	@GetMapping(value = "/edit_course/{id}")
-	  public String displayEditCourseForm(@PathVariable("id") int id, ModelMap modelmap) { 
-		modelmap.addAttribute("studentList", courseService.getStudentsAssignedToCourse(id));
-		modelmap.addAttribute("course", courseService.getCourseById(id));
-		modelmap.addAttribute("teacherList", courseService.getTeachersAssignedToCourse(id));
-		modelmap.addAttribute("resultsList", courseService.getCourseById(id).getResults());
+	  public String displayEditCourseForm(@PathVariable("id") int id, Model model) {
+		Set<Student> studentList = courseService.getStudentsAssignedToCourse(id);
+		Set<Teacher> teacherList = courseService.getTeachersAssignedToCourse(id);
+		List<Results> resultsList = courseService.getCourseById(id).getResults();
+		List<ClassSchedule> courseSchedules = courseService.getScheduleByCourseId(id);
+			if(studentList.isEmpty()) {
+				model.addAttribute("emptyStudentList", "There are no students registered to this course. Please contact Program Admissions");
+				if (teacherList.isEmpty()) {
+					model.addAttribute("emptyTeacherList", "There are no teachers assigned to this course. Please contact Program Admissions");
+					if(resultsList.isEmpty()) {
+						model.addAttribute("emptyResultsList", "There are no results available. Please contact teacher assigned to this course");
+						if(courseSchedules.isEmpty()) {
+							model.addAttribute("emptyCourseSchedule", "There is no schedule available for this course. Please contact Program Administrator");
+						}
+					}					
+				}				
+			}
+		
+		model.addAttribute("studentList", studentList);
+		model.addAttribute("course", courseService.getCourseById(id));
+		model.addAttribute("teacherList", teacherList);
+		model.addAttribute("resultsList", resultsList);
+		model.addAttribute("courseSchedule", courseSchedules);
 		return "editCourse";
 	
 	}
@@ -144,12 +168,30 @@ public class CourseController {
 	 * @return the string
 	 */
 	@GetMapping(value = "/course_details/{courseID}")
-	  public String displayCourseDetailsPage(@PathVariable("courseID") int courseID, ModelMap modelmap) { 
-		modelmap.addAttribute("studentList", courseService.getStudentsAssignedToCourse(courseID));
-		modelmap.addAttribute("course", courseService.getCourseById(courseID));
-		modelmap.addAttribute("teacherList", courseService.getTeachersAssignedToCourse(courseID));
-		modelmap.addAttribute("resultsList", courseService.getCourseById(courseID).getResults());
-	//	modelmap.addAttribute("classScheduleList", courseService.ge)
+	  public String displayCourseDetailsPage(@PathVariable("courseID") int courseID, Model model) { 
+		Set<Student> studentList = courseService.getStudentsAssignedToCourse(courseID);
+		Set<Teacher> teacherList = courseService.getTeachersAssignedToCourse(courseID);
+		List<Results> resultsList = courseService.getCourseById(courseID).getResults();
+		List<ClassSchedule> courseSchedules = courseService.getScheduleByCourseId(courseID);
+			if(studentList.isEmpty()) {
+				model.addAttribute("emptyStudentList", "There are no students registered to this course. Please contact Program Admissions");
+				if (teacherList.isEmpty()) {
+					model.addAttribute("emptyTeacherList", "There are no teachers assigned to this course. Please contact Program Admissions");
+					if(resultsList.isEmpty()) {
+						model.addAttribute("emptyResultsList", "There are no results available. Please contact teacher assigned to this course");
+						if(courseSchedules.isEmpty()) {
+							model.addAttribute("emptyCourseSchedule", "There is no schedule available for this course. Please contact Program Administrator");
+						}
+					}					
+				}				
+			}
+		
+		model.addAttribute("studentList", studentList);
+		model.addAttribute("course", courseService.getCourseById(courseID));
+		model.addAttribute("teacherList", teacherList);
+		model.addAttribute("resultsList", resultsList);
+		model.addAttribute("courseSchedule", courseSchedules);
+
 		return "courseDetails";
 	
 	}

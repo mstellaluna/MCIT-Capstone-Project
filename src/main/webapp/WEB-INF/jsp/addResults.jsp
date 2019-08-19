@@ -15,12 +15,14 @@
 
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
-<div class="container studentForm">
+<div class="container mainForm">
 			<h1>Add Results</h1>
+	
          <c:url var="addAction" value="addResults" />
            <form:form action="${addAction}" modelAttribute="results" method="POST">
            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />  
          	 <div class="form-group row"> 
+         	 <p>${emptyStudentList}</p>
           	<select id="studentId" name="studentId" class=" student_names_dropdown custom-select custom-select-lg mb-3">
             	<option value="">Select Student</option>
 					<c:forEach items="${studentList}" var="student">
@@ -29,6 +31,7 @@
 			</select>
            </div>
                      <div class="form-group row"> 
+                     <p>${emptyCourseList}</p>
           	<select id="courseId" name="courseId" class=" student_names_dropdown custom-select custom-select-lg mb-3">
             	<option value="">Select Course</option>
 					<c:forEach items="${courseList}" var="course">
@@ -53,12 +56,13 @@
                             <input type='number' class="form-control" name='mark' required>
                         </td>
                     </tr>
+                     <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>
                     </table>
-				   <div class="form-group row">
-                <div class="offset-xs-3 col-xs-9">
-                        <button class="btn btn-info" type="submit" name="addResult" id="submit">Add Result</button>
-                </div>
-                </div>
         </form:form>
 
 

@@ -15,16 +15,19 @@
 
 
 
-    <div class="container allCourseView">
+    <div class="container mainForm">
         <h1>All Locations</h1>
-         <c:if test="${!empty locationsList}">
+        <c:if test="${empty locationList}">
+       		<p>${emptyLocationList}</p>
+ 		</c:if>
+         <c:if test="${!empty locationList}">
         <table class="table table-bordered table-responsive-md table-striped text-center">
             <tr>
               <th class="text-center">Location ID</th>
               <th class="text-center">Location Name</th>
               <th class="text-center">Actions</th>
             </tr>
-            <c:forEach items="${locationsList}" var="location">
+            <c:forEach items="${locationList}" var="location">
             <tr>
               <td class="pt-3-half">${location.id}</td>
               <td class="pt-3-half">${location.locationName}</td>

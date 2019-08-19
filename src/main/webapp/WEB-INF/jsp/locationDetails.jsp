@@ -11,10 +11,10 @@
 <%@include file="/WEB-INF/templates/nav.jsp"%>
 
 <body>
-<div class="container bootstrap snippet studentForm">
+<div class="container bootstrap snippet mainForm">
     <h1>Location Details</h1>
       
-    <div class="allCourseViewStudentDetails">
+    <div class="container bootstrap snippet mainForm">
      <h3>Room Details</h3>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
@@ -31,38 +31,39 @@
                 </tr> 
               </table> 
         </div>   
-        
-            <div class="allCourseViewStudentDetails">
-       <h3>Scheduled Classes</h3>
-       <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
-                <tr>
-                  <th class="text-center">Schedule ID</th>
-                  <th class="text-center">Course ID</th>
-                  <th class="text-center">Course Name</th>
-                  <th class="text-center">Start Time</th>
-                  <th class="text-center">End Time</th>
-                  <th class="text-center">Date</th>
-                  <th class="text-center">Action</th>
-                </tr>
-                 <c:forEach items="${scheduleList}" var="schedule">
-                <tr>
-                  <td class="pt-3-half">${schedule.id}</td>
-                 <td class="pt-3-half">${schedule.location.locationId}</td>
-                  <td class="pt-3-half">${schedule.location.locationName}</td>
-                  <td class="pt-3-half">${schedule.location.locationName}</td> 
-                  <td class="pt-3-half">${schedule.location.locationName}</td> 
-                  <td class="pt-3-half">${schedule.location.locationName}</td> 
-                  <td class="pt-3-half">${schedule.location.locationName}</td> 
-                  <td class="pt-3-half">${schedule.location.locationName}</td>  
-                  <td>
-                  <span class="table-details"><a type="button" class="btn btn-info btn-rounded btn-sm my-0"  href="<c:url value='/schedule/schedule_details/${schedule.id}'/> ">Details</a></span>
-                   <span class="text-center editCourse"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/schedule/edit_schedule_entry/${schedule.id}'/> ">Edit</a></span>
-                    <span class="text-center editCourse"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0"  href="<c:url value='/schedule/remove_schedule_entry/${course.id}/${teacher.id}'/> ">Delete</a></span>
+      <div class="container bootstrap snippet mainForm">
+       <h3>Schedule Information </h3>
+       <p>${emptyLocationSchedule}</p>
+   <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+        	<th class="text-center">Schedule ID</th>
+            <th class="text-center">Location ID</th>
+            <th class="text-center">Location Name</th>
+            <th class="text-center">Course ID</th>
+            <th class="text-center">Course Name</th>
+            <th class="text-center">Start Time</th>
+            <th class="text-center">End Time</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <c:forEach items="${locationSchedule}" var="schedule">
+            <tr>
+           		<td class="pt-3-half">${schedule.id}</td>
+                <td class="pt-3-half">${schedule.scheduledLocations.id}</td>
+                <td class="pt-3-half">${schedule.scheduledLocations.locationName}</td>
+                <td class="pt-3-half">${schedule.scheduledCourses.id}</td>
+                <td class="pt-3-half">${schedule.scheduledCourses.courseName}</td> 
+                <td class="pt-3-half">${schedule.startTime}</td>
+                <td class="pt-3-half">${schedule.endTime}</td>
+                <td class="pt-3-half">${schedule.classDate}</td>                
+                <td>
+                   <span class="text-center editCourse"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/schedule/edit_schedule/${schedule.id}'/> ">Edit</a></span>
+                    <span class="text-center editCourse"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0"  href="<c:url value='/schedule/delete_schedule?id=${schedule.id}'/> ">Delete</a></span>
                   </td>
                 </tr> 
                 </c:forEach>
               </table> 
-        </div>
+        </div>    
        </div>           
   </body>  
   </html>

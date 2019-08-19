@@ -15,7 +15,7 @@
 
     
 
-    <div class="container courseForm">
+    <div class="container mainForm">
         <h1>Edit Course</h1>
           <c:url var="editAction" value="/course/updateCourse?id=${course.id}" />
          
@@ -52,17 +52,18 @@
 						<form:input type="text" cssClass="form-control" path="creditNumber" value="${course.creditNumber}"  required="required"/>
 					</td>
 				</tr>
+				 <tr>
+                        <td colspan="2">
+                      		 <button class="btn btn-info" type="submit" name="submit" value="submit">Submit</button>
+                        	 <button class="btn btn-secondary" type="reset" name="reset" value="reset">Cancel</button>                            
+                        </td>
+                    </tr>
 				</table>
-				
-             <div class="form-group row">
-                <div class="offset-xs-3 col-xs-9">
-                    <button class="btn btn-primary" type="submit" name="updateCourse" id="submit">Update Course</button>
-                </div>
-                </div>
         </form:form>
         
-        <div class="allCourseViewStudentDetails">
+        <div class="container bootstrap snippet mainForm">
        <h3>Assigned Teacher(s)</h3>
+       <p>${emptyTeacherList}</p>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
                   <th class="text-center">ID</th>
@@ -84,8 +85,9 @@
                 </c:forEach>
               </table> 
         </div> 
-         <div class="allCourseViewStudentDetails">
+         <div class="container bootstrap snippet mainForm">
        <h3>Enrolled Students</h3>
+       <p>${emptyStudentList}</p>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
                    <th class="text-center">Student ID</th>
@@ -108,8 +110,9 @@
                 </c:forEach>
               </table> 
         </div> 
-         <div class="allCourseViewStudentDetails">
+         <div class="container bootstrap snippet mainForm">
        <h3>Results for Enrolled Students </h3>
+       <p>${emptyResultsList}</p>
        <table class=" courseViewStudent table table-bordered table-responsive-md table-striped text-center">
                 <tr>
                   <th class="text-center">Student ID</th>
@@ -133,7 +136,41 @@
                 </tr> 
                 </c:forEach>
               </table> 
-        </div>    
+        </div> 
+        
+                <div class="container bootstrap snippet mainForm">
+       <h3>Schedule Information </h3>
+       <p>${emptyCourseSchedule}</p>
+   <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+        	<th class="text-center">Schedule ID</th>
+            <th class="text-center">Location ID</th>
+            <th class="text-center">Location Name</th>
+            <th class="text-center">Course ID</th>
+            <th class="text-center">Course Name</th>
+            <th class="text-center">Start Time</th>
+            <th class="text-center">End Time</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Actions</th>
+        </tr>
+        <c:forEach items="${courseSchedule}" var="schedule">
+            <tr>
+           		<td class="pt-3-half">${schedule.id}</td>
+                <td class="pt-3-half">${schedule.scheduledLocations.id}</td>
+                <td class="pt-3-half">${schedule.scheduledLocations.locationName}</td>
+                <td class="pt-3-half">${schedule.scheduledCourses.id}</td>
+                <td class="pt-3-half">${schedule.scheduledCourses.courseName}</td> 
+                <td class="pt-3-half">${schedule.startTime}</td>
+                <td class="pt-3-half">${schedule.endTime}</td>
+                <td class="pt-3-half">${schedule.classDate}</td>                
+                <td>
+                   <span class="text-center editCourse"><a type="button" class="btn btn-primary btn-rounded btn-sm my-0"  href="<c:url value='/schedule/edit_schedule/${schedule.id}'/> ">Edit</a></span>
+                    <span class="text-center editCourse"><a type="button" class="btn btn-danger btn-rounded btn-sm my-0"  href="<c:url value='/schedule/delete_schedule?id=${schedule.id}'/> ">Delete</a></span>
+                  </td>
+                </tr> 
+                </c:forEach>
+              </table> 
+        </div>   
     </div>
 </body>
 
